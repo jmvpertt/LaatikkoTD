@@ -10,3 +10,8 @@
     Git- ja github opiskelua
     Netbeans-projektin luonti
     
+2014-09-09
+  2+ tuntia
+    ohja- ja ohpe-kertausta
+    github säätöä
+    
