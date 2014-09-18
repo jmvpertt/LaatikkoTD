@@ -29,28 +29,21 @@ public class PelialustaTest {
     
     @Test
     public void alkuasetelmaOikein() {
-        assertEquals(0, pelialusta.vuoronNumero());
+        assertEquals(0, pelialusta.haeKuolleet());
     }
     
     @Test
-    public void vuoroVaihtuu() {
-        pelialusta.vuoronvaihto();
-        assertEquals(1, pelialusta.vuoronNumero());
+    public void tapaUkko() {
+        pelialusta.vieHautausmaalle();
+        assertEquals(1, pelialusta.haeKuolleet());
     }
     
     @Test
-    public void tornitOikeillaPaikoilla() {
-        Torni torni = new Torni();
-        pelialusta.setTorni(2, torni);
-        assertEquals("2, torni", pelialusta.tulostaTornit());
+    public void tapaToinenUkko() {
+        pelialusta.vieHautausmaalle();
+        pelialusta.vieHautausmaalle();
+        assertEquals(2, pelialusta.haeKuolleet());
     }
     
-    @Test
-    public void ukotOikeillaPaikoilla() {
-        Ukko ukko = new Ukko();
-        pelialusta.setUkko(2, ukko);
-        assertEquals("2, ukko", pelialusta.tulostaUkot());
-    }
-    
-    
+   
 }

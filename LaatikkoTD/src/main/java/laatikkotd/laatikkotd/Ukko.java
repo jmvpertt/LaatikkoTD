@@ -10,28 +10,24 @@ package laatikkotd.laatikkotd;
  */
 public class Ukko {
     
-    private int hp;
-    private int nopeus;
+    private int sijainti;
     
-    public Ukko() {
-        this.hp = 1;
-        this.nopeus = 1;
+    public Ukko(int sijainti) {
+        this.sijainti = sijainti;
     }
     
-    public void hakkaa() {
-        
+    public int haeSijainti() {
+        return this.sijainti;
     }
     
-    public int getHp() {
-        return this.hp;
+    public void kuole() {
+        this.sijainti = 99;
     }
     
-    public int getNopeus() {
-        return this.nopeus;
+    public void siirra() {
+        if ( this.sijainti == 99) {
+            return;
+        }
+        this.sijainti++;
     }
-    
-    public void osuma() {
-        this.hp--;
-    }
-    
 }

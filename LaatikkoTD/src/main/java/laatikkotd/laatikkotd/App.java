@@ -7,9 +7,16 @@ package laatikkotd.laatikkotd;
 public class App 
 {
     public static void main( String[] args ) {
+        
+        Pelilauta pelilauta = new Pelilauta();
         Pelialusta pelialusta = new Pelialusta();
-        Torni torni = new Torni();
-        pelialusta.setTorni(1, torni);
-        pelialusta.tulostaTornit();
+        Ukko ukko = new Ukko(1);
+        Torni torni = new Torni(4);
+        pelilauta.piirraLauta(ukko, torni, pelialusta);
+        ukko.siirra();
+        torni = new Torni(3);
+        pelilauta.piirraLauta(ukko, torni, pelialusta);
+        ukko.siirra();
+        pelilauta.piirraLauta(ukko, torni, pelialusta);
     }
 }

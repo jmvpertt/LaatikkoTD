@@ -10,24 +10,13 @@ package laatikkotd.laatikkotd;
  */
 public class Torni {
     
-    private int kantama;
-    private int nopeus;
-    private int voima;
-    private int hinta;
+    private int sijainti;
     
-    public Torni() {
-        this.kantama = 1;
-        this.nopeus = 1;
-        this.voima = 1;
-        this.hinta = 1;
+    public Torni(int sijainti) {
+        this.sijainti = sijainti;
     }
     
-    public void ammu(Ukko ukko) {
-        ukko.osuma();
+    public int haeSijainti() {
+        return this.sijainti;
     }
-    
-    public boolean tahtaa() {
-        return false;
-    }
-    
 }
