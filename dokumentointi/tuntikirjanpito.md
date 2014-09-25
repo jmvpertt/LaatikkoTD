@@ -15,3 +15,14 @@
     ohja- ja ohpe-kertausta
     github säätöä
     
+2014-09-11
+  2+ tuntia
+    Oman koneen maven jotenkin rikki, ei juuri edistystä.
+    Koulun koneista ei juuri apua.
+2014-09-17
+  2+ tuntia
+    lisää kertausta
+    
+2014-09-18
+  5+ tuntia
+    Koodaus aloitettu käytännössä alusta, keskittyen pienempiin muutoksiin ja TDD:hen
