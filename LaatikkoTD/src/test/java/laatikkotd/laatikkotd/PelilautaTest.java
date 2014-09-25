@@ -5,6 +5,7 @@
  */
 package laatikkotd.laatikkotd;
 
+import java.util.Arrays;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -22,10 +23,19 @@ public class PelilautaTest {
     }
 
     Pelilauta pelilauta;
+    Pelialusta pelialusta;
     
     @Before
     public void setUp() {
-        Pelilauta pelilauta = new Pelilauta();
+        pelialusta = new Pelialusta();
+        Pelilauta pelilauta = new Pelilauta(pelialusta);
     }
+    
+    @Test
+    public void alkuasetelmaOikein() {
+    }
+    
+    
+    
 
 }

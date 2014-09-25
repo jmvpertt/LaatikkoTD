@@ -16,7 +16,19 @@ public class Torni {
         this.sijainti = sijainti;
     }
     
+    /**
+    * Metodi palauttaa tornin sijainnin kokonaislukuna. Arvo on välillä
+    * 0-10
+    */
     public int haeSijainti() {
+        return this.sijainti;
+    }
+    
+    /**
+    * Metodi "ampuu" palauttamalla tornin sijainnin kokonaislukuna
+    * Arvo on välillä 0-10
+    */
+    public int ammu() {
         return this.sijainti;
     }
 }

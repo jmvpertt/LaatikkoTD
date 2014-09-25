@@ -29,20 +29,23 @@ public class PelialustaTest {
     
     @Test
     public void alkuasetelmaOikein() {
-        assertEquals(0, pelialusta.haeKuolleet());
+        assertEquals(0, pelialusta.getKuolleet());
     }
     
     @Test
     public void tapaUkko() {
-        pelialusta.vieHautausmaalle();
-        assertEquals(1, pelialusta.haeKuolleet());
+        pelialusta.lisaaUkko(new Ukko(1,1));
+        pelialusta.poistaUkko(1);
+        assertEquals(1, pelialusta.getKuolleet());
     }
     
     @Test
     public void tapaToinenUkko() {
-        pelialusta.vieHautausmaalle();
-        pelialusta.vieHautausmaalle();
-        assertEquals(2, pelialusta.haeKuolleet());
+        pelialusta.lisaaUkko(new Ukko(1,1));
+        pelialusta.lisaaUkko(new Ukko(3,1));
+        pelialusta.poistaUkko(1);
+        pelialusta.poistaUkko(3);
+        assertEquals(2, pelialusta.getKuolleet());
     }
     
    

@@ -21,22 +21,25 @@ public class UkkoTest {
     public UkkoTest() {
     }
     
-    Ukko ukko = new Ukko(0);
+    Ukko ukko = new Ukko(0, 3);
     
     @Before
     public void setUp() {
-        Ukko ukko = new Ukko(0);
+        Ukko ukko = new Ukko(0, 3);
     }
     
     @Test
     public void alkuasetelmaOikein() {
         assertEquals(0, ukko.haeSijainti());
+        assertEquals(3, ukko.getHp());
     }
     
     @Test
     public void kuollutUkko() {
         ukko.kuole();
-        assertEquals(99, ukko.haeSijainti());
+        ukko.kuole();
+        ukko.kuole();
+        assertEquals(11, ukko.haeSijainti());
     }
     
     @Test
@@ -48,14 +51,16 @@ public class UkkoTest {
     @Test
     public void kuollutUkkoEiSiirry() {
         ukko.kuole();
-        assertEquals(99, ukko.haeSijainti());
+        ukko.kuole();
+        ukko.kuole();
+        assertEquals(11, ukko.haeSijainti());
         ukko.siirra();
-        assertEquals(99, ukko.haeSijainti());
+        assertEquals(11, ukko.haeSijainti());
     }
     
     @Test
     public void haeUkonSijainti() {
-        Ukko ukko2 = new Ukko(4);
+        Ukko ukko2 = new Ukko(4, 3);
         assertEquals(4, ukko2.haeSijainti());
     }
     

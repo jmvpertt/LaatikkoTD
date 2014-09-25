@@ -8,15 +8,15 @@ public class App
 {
     public static void main( String[] args ) {
         
-        Pelilauta pelilauta = new Pelilauta();
         Pelialusta pelialusta = new Pelialusta();
-        Ukko ukko = new Ukko(1);
-        Torni torni = new Torni(4);
-        pelilauta.piirraLauta(ukko, torni, pelialusta);
-        ukko.siirra();
-        torni = new Torni(3);
-        pelilauta.piirraLauta(ukko, torni, pelialusta);
-        ukko.siirra();
-        pelilauta.piirraLauta(ukko, torni, pelialusta);
+        Pelilauta pelilauta = new Pelilauta(pelialusta);
+        pelialusta.lisaaUkko(new Ukko(3,1));
+        pelialusta.lisaaTorni(new Torni(4));
+
+        pelilauta.piirraLauta(pelialusta);
+        pelilauta.seuraavaVuoro();
+        pelilauta.piirraLauta(pelialusta);
+        pelilauta.seuraavaVuoro();
+        pelilauta.piirraLauta(pelialusta);
     }
 }
