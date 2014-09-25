@@ -26,3 +26,7 @@
 2014-09-18
   5+ tuntia
     Koodaus aloitettu käytännössä alusta, keskittyen pienempiin muutoksiin ja TDD:hen
+
+2014-09-25
+  8+ tuntia
+    Refaktorointia, luokka-kaavio, javadoc, pit, testejä
