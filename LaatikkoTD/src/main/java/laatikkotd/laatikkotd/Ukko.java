@@ -26,7 +26,7 @@ public class Ukko {
     */
     public int haeSijainti() {
         if (!this.elossa) {
-            return 0;
+            return 99;
         }
         return this.sijainti;
     }
