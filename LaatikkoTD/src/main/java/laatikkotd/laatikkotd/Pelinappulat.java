@@ -81,5 +81,10 @@ public class Pelinappulat {
     public int getKuolleet() {
         return this.kuolleet;
     }
+    
+    @Override
+    public String toString() {
+        return "Ukot: "+this.ukot.size()+", Tornit: "+this.tornit.size()+", Kuolleet: "+this.kuolleet;
+    }
 
 }
