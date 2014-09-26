@@ -23,11 +23,11 @@ public class PelilautaTest {
     }
 
     Pelilauta pelilauta;
-    Pelialusta pelialusta;
+    Pelinappulat pelialusta;
     
     @Before
     public void setUp() {
-        pelialusta = new Pelialusta();
+        pelialusta = new Pelinappulat();
         Pelilauta pelilauta = new Pelilauta(pelialusta);
     }
     

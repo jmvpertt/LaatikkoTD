@@ -15,16 +15,16 @@ import static org.junit.Assert.*;
  *
  * @author juha
  */
-public class PelialustaTest {
+public class PelinappulatTest {
     
-    public PelialustaTest() {
+    public PelinappulatTest() {
     }
     
-    Pelialusta pelialusta;
+    Pelinappulat pelialusta;
     
     @Before
     public void setUp() {
-        pelialusta = new Pelialusta();
+        pelialusta = new Pelinappulat();
     }
     
     @Test

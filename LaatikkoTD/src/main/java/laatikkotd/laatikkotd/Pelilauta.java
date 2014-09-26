@@ -14,13 +14,13 @@ import java.util.Arrays;
  */
 public class Pelilauta {
     
-    private Pelialusta pelialusta;
+    private Pelinappulat pelialusta;
     private char[] ukot;
     private char[] tornit;
     private int hautausmaa;
     
     
-    public Pelilauta(Pelialusta pelialusta) {
+    public Pelilauta(Pelinappulat pelialusta) {
         this.pelialusta = pelialusta;
         this.ukot = new char[10];
         this.tornit = new char[10];

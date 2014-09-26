@@ -12,13 +12,13 @@ import java.util.Arrays;
  *
  * @author juha
  */
-public class Pelialusta {
+public class Pelinappulat {
 
     private int kuolleet;
     private ArrayList<Ukko> ukot;
     private ArrayList<Torni> tornit;
     
-    public Pelialusta() {
+    public Pelinappulat() {
         this.kuolleet = 0;
         this.ukot = new ArrayList<>();
         this.tornit = new ArrayList<>();

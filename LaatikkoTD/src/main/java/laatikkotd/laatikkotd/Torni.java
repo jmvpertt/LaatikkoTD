@@ -11,9 +11,11 @@ package laatikkotd.laatikkotd;
 public class Torni {
     
     private int sijainti;
+    private int voima;
     
     public Torni(int sijainti) {
         this.sijainti = sijainti;
+        this.voima = 2;
     }
     
     /**
@@ -25,10 +27,11 @@ public class Torni {
     }
     
     /**
-    * Metodi "ampuu" palauttamalla tornin sijainnin kokonaislukuna
-    * Arvo on välillä 0-10
+    * Metodi "ampuu" palauttamalla tornin "voiman" kokonaislukuna
+    * 
+    * @return this.voima (int)
     */
     public int ammu() {
-        return this.sijainti;
+        return this.voima;
     }
 }
