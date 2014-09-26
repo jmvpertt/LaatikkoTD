@@ -58,28 +58,19 @@ public class Pelilauta {
     
     /**
     * Metodi käy läpi kaikki ukko-oliot ja siirtää niitä askeleen eteenpäin.
-    * Jos torni ja ukko ovat samalla paikalla, se poistaa ukon ja lisää
-    * hautausmaalle +1
+    * 
     */
     public void seuraavaVuoro() {
         for (Ukko i : this.pelialusta.getUkot()) {
             i.siirra();
         }
-//        String str = "T";
-//        int torneja = Arrays.binarySearch(this.tornit, str.charAt(0));
-//        str = "U";
-//        int ukkoja = Arrays.binarySearch(this.ukot, str.charAt(0));
-//        if (torneja == ukkoja) {
-//            pelialusta.poistaUkko(ukkoja);
-//            pelialusta.lisaaHautausmaalle();
-//        }
         
     }
     
     
     /**
     * Metodi piirtää ukkojen ja tornien paikat taulukon toString -metodin
-    * avulla ja antaa kuolleiden määrän kokonailukuna.
+    * avulla ja antaa kuolleiden määrän kokonaislukuna.
     */
     public void piirraLauta() {
         System.out.println(
