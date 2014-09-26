@@ -13,11 +13,13 @@ public class Ukko {
     private int sijainti;
     private boolean elossa;
     private int hp;
+    private char merkki;
     
     public Ukko(int sijainti, int hp) {
         this.sijainti = sijainti;
         this.elossa = true;
         this.hp = 3;
+        this.merkki = 2;
     }
     
     /**
@@ -54,5 +56,10 @@ public class Ukko {
             return;
         }
         this.sijainti++;
+    }
+    
+    @Override
+    public String toString() {
+        return ""+this.merkki;
     }
 }

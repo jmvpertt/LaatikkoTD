@@ -17,14 +17,11 @@ public class Pelilauta {
     private Pelinappulat pelialusta;
     private char[] ukot;
     private char[] tornit;
-    private int hautausmaa;
-    
     
     public Pelilauta(Pelinappulat pelialusta) {
         this.pelialusta = pelialusta;
         this.ukot = new char[10];
         this.tornit = new char[10];
-        this.hautausmaa = 0;
     }
     
     /**
