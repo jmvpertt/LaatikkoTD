@@ -36,10 +36,7 @@ public class Ukko {
     */
     public void kuole() {
         this.hp = 0;
-        this.sijainti = 11;
-//        if (this.hp == 0) {
-//            this.elossa = false;
-//        }
+        this.elossa = false;
     }
     
     /**
@@ -53,7 +50,7 @@ public class Ukko {
     * Metodi lisää +1 sijaintiin. Ei tee mitään jos ukko on kuollut.
     */
     public void siirra() {
-        if ( this.sijainti == 11 ) {
+        if (!this.elossa) {
             return;
         }
         this.sijainti++;

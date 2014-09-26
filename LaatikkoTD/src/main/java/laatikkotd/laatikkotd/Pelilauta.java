@@ -31,32 +31,32 @@ public class Pelilauta {
     * Metodi piirtää ukkojen paikat taulukon toString -metodin
     * avulla.
     */
-    public void piirraUkot() {
+    public String piirraUkot() {
         this.ukot = new char[10];
-        for (Ukko i : pelialusta.getUkot()) {
+        for (Ukko i : this.pelialusta.getUkot()) {
             String str = "U";
             this.ukot[i.haeSijainti()] = str.charAt(0);
         }
-        System.out.println(Arrays.toString(this.ukot));
+        return Arrays.toString(this.ukot);
     }
     
     /**
     * Metodi piirtää tornien paikat taulukon toString -metodin
     * avulla.
     */
-    public void piirraTornit() {
-        for (Torni i : pelialusta.getTornit()) {
+    public String piirraTornit() {
+        for (Torni i : this.pelialusta.getTornit()) {
             String str = "T";
             this.tornit[i.haeSijainti()] = str.charAt(0);
         }
-        System.out.println(Arrays.toString(this.tornit));
+        return Arrays.toString(this.tornit);
     }
     
     /**
     * Metodi antaa kuolleiden ukkojen määrän kokonaislukuna
     */
-    public void piirraHautausmaa() {
-        System.out.println(pelialusta.getKuolleet());
+    public int piirraHautausmaa() {
+        return this.pelialusta.getKuolleet();
     }
     
     /**
@@ -65,19 +65,17 @@ public class Pelilauta {
     * hautausmaalle +1
     */
     public void seuraavaVuoro() {
-        for (Ukko i : pelialusta.getUkot()) {
-            if (i.haeSijainti() < 10 ) {
-                i.siirra();
-            }
+        for (Ukko i : this.pelialusta.getUkot()) {
+            i.siirra();
         }
-        String str = "T";
-        int torneja = Arrays.binarySearch(this.tornit, str.charAt(0));
-        str = "U";
-        int ukkoja = Arrays.binarySearch(this.ukot, str.charAt(0));
-        if (torneja == ukkoja) {
-            pelialusta.poistaUkko(ukkoja);
-            pelialusta.lisaaHautausmaalle();
-        }
+//        String str = "T";
+//        int torneja = Arrays.binarySearch(this.tornit, str.charAt(0));
+//        str = "U";
+//        int ukkoja = Arrays.binarySearch(this.ukot, str.charAt(0));
+//        if (torneja == ukkoja) {
+//            pelialusta.poistaUkko(ukkoja);
+//            pelialusta.lisaaHautausmaalle();
+//        }
         
     }
     
@@ -86,10 +84,11 @@ public class Pelilauta {
     * Metodi piirtää ukkojen ja tornien paikat taulukon toString -metodin
     * avulla ja antaa kuolleiden määrän kokonailukuna.
     */
-    public void piirraLauta(Pelialusta pelialusta) {
-        piirraUkot();
-        piirraTornit();
-        piirraHautausmaa();
+    public void piirraLauta() {
+        System.out.println(
+            piirraUkot()+"\n"+
+            piirraTornit()+"\n"+
+            piirraHautausmaa()+"\n");
     }
 
 }
