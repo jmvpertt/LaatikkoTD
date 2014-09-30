@@ -15,16 +15,23 @@ public class Taso {
     private int tasonPituus;
     private int kylanKoko;
     private Pelinappulat pelinappulat;
-    private int numero;
+    private int tasonNumero;
     
-    public Taso(Pelinappulat pelinappulat) {
-        this.pelinappulat = pelinappulat;
-        this.numero = 1;
+    public Taso(int tasonNumero) {
+        this.pelinappulat = new Pelinappulat();
+        this.tasonNumero = tasonNumero;
+        this.kylanKoko = 10;
+        this.tasonPituus = 10;
+    }
+    
+    public void generoiTaso() {
+        pelinappulat.lisaaTorni(new Torni(5));
+        pelinappulat.lisaaUkko(new Ukko(3,1));
     }
     
     @Override
     public String toString() {
-        return ""+this.numero;
+        return ""+this.tasonNumero;
     }
     
 }
