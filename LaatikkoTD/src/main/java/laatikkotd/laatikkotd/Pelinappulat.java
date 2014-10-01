@@ -86,5 +86,5 @@ public class Pelinappulat {
     public String toString() {
         return "Ukot: "+this.ukot.size()+", Tornit: "+this.tornit.size()+", Kuolleet: "+this.kuolleet;
     }
-
+    
 }
