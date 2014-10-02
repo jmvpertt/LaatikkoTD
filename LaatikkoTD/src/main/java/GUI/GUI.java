@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
+import laatikkotd.laatikkotd.Pelinappulat;
 
 /**
  *
@@ -20,8 +21,10 @@ import javax.swing.WindowConstants;
 public class GUI implements Runnable {
 
     private JFrame ikkuna;
+    private Pelinappulat pelinappulat;
 
-    public GUI() {
+    public GUI(Pelinappulat pelinappulat) {
+        this.pelinappulat = pelinappulat;
     }
 
     @Override
@@ -53,7 +56,7 @@ public class GUI implements Runnable {
         JLabel ruutu8 = new JLabel("_");
         JLabel ruutu9 = new JLabel("_");
         
-        JLabel torni0 = new JLabel("|");
+        JLabel torni0 = new JLabel("0");
         JLabel torni1 = new JLabel("|");
         JLabel torni2 = new JLabel("|");
         JLabel torni3 = new JLabel("|");
@@ -74,6 +77,9 @@ public class GUI implements Runnable {
         JButton addTorni7 = new JButton("7");
         JButton addTorni8 = new JButton("8");
         JButton addTorni9 = new JButton("9");
+        
+        addTorniKuuntelija kuuntelija = new addTorniKuuntelija(pelinappulat, addTorni0);
+        addTorni0.addActionListener(kuuntelija);
         
         container.add(ruutu0);
         container.add(ruutu1);

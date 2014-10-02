@@ -10,11 +10,14 @@ package GUI;
  * @author Juha
  */
 import javax.swing.SwingUtilities;
+import laatikkotd.laatikkotd.Pelinappulat;
 
 public class Main {
 
     public static void main(String[] args) {
-        GUI gui = new GUI();
+        Pelinappulat pn = new Pelinappulat();
+        GUI gui = new GUI(pn);
         SwingUtilities.invokeLater(gui);
+        System.out.println(pn.getTornit().toString());
     }
 }
