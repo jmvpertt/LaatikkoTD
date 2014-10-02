@@ -50,7 +50,7 @@ public class GUI implements Runnable {
         container.setLayout(layout);
         
         
-        JLabel ruutu0 = new JLabel("_", SwingConstants.CENTER);
+        JLabel ruutu0 = new JLabel("U", SwingConstants.CENTER);
         JLabel ruutu1 = new JLabel("_", SwingConstants.CENTER);
         JLabel ruutu2 = new JLabel("_", SwingConstants.CENTER);
         JLabel ruutu3 = new JLabel("_", SwingConstants.CENTER);
