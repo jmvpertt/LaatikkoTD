@@ -23,6 +23,7 @@ public class Pelinappulat {
         this.ukot = new ArrayList<>();
         this.tornit = new ArrayList<>();
         
+        this.ukot.add(new Ukko(0, 1));
     }
     
     /**
@@ -80,6 +81,13 @@ public class Pelinappulat {
     */
     public int getKuolleet() {
         return this.kuolleet;
+    }
+    
+    public void seuraavaVuoro() {
+        for (Ukko i : getUkot()) {
+            i.siirra();
+        }
+        
     }
     
     @Override

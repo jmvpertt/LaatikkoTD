@@ -18,6 +18,5 @@ public class Main {
         Pelinappulat pn = new Pelinappulat();
         GUI gui = new GUI(pn);
         SwingUtilities.invokeLater(gui);
-        System.out.println(pn.getTornit().toString());
     }
 }

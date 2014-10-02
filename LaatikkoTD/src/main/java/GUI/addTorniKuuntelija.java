@@ -8,6 +8,7 @@ package GUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import laatikkotd.laatikkotd.Pelinappulat;
 import laatikkotd.laatikkotd.Torni;
 
@@ -18,27 +19,22 @@ import laatikkotd.laatikkotd.Torni;
 public class addTorniKuuntelija implements ActionListener {
     
     private laatikkotd.laatikkotd.Pelinappulat pelinappulat;
-    private JButton addTorni0;
-    private JButton addTorni1;
-    private JButton addTorni2;
-    private JButton addTorni3;
-    private JButton addTorni4;
-    private JButton addTorni5;
-    private JButton addTorni6;
-    private JButton addTorni7;
-    private JButton addTorni8;
-    private JButton addTorni9;
+    private JButton addTorni;
+    private JLabel TorniLabel;
+    private int paikka;
     
-    public addTorniKuuntelija(Pelinappulat pelinappulat, JButton addTorni0) {
+    public addTorniKuuntelija(Pelinappulat pelinappulat, JButton addTorni, JLabel Torni, int paikka) {
         this.pelinappulat = pelinappulat;
-        this.addTorni0 = addTorni0;
+        this.addTorni = addTorni;
+        this.TorniLabel = Torni;
+        this.paikka = paikka;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Torni torni = new Torni(0);
+        Torni torni = new Torni(this.paikka);
         pelinappulat.lisaaTorni(torni);
-        
+        this.TorniLabel.setText("T");
     }
     
 }
