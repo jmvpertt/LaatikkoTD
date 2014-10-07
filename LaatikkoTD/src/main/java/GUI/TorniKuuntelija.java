@@ -16,17 +16,15 @@ import laatikkotd.laatikkotd.Torni;
  *
  * @author Juha
  */
-public class addTorniKuuntelija implements ActionListener {
+public class TorniKuuntelija implements ActionListener {
     
-    private laatikkotd.laatikkotd.Pelinappulat pelinappulat;
-    private JButton addTorni;
-    private JLabel TorniLabel;
+    private Pelinappulat pelinappulat;
+    private JButton torni;
     private int paikka;
     
-    public addTorniKuuntelija(Pelinappulat pelinappulat, JButton addTorni, JLabel Torni, int paikka) {
+    public TorniKuuntelija(Pelinappulat pelinappulat, JButton torni, int paikka) {
         this.pelinappulat = pelinappulat;
-        this.addTorni = addTorni;
-        this.TorniLabel = Torni;
+        this.torni = torni;
         this.paikka = paikka;
     }
 
@@ -34,7 +32,7 @@ public class addTorniKuuntelija implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Torni torni = new Torni(this.paikka);
         pelinappulat.lisaaTorni(torni);
-        this.TorniLabel.setText("T");
+        this.torni.setText("T");
     }
     
 }
