@@ -55,6 +55,7 @@ public class GUI implements Runnable {
         
         container.add(luoUkkopolku());
         container.add(luoTornirivi());
+        container.add(luoHautausmaa());
         container.add(luoValikonPainikkeet());
              
     }
@@ -95,16 +96,30 @@ public class GUI implements Runnable {
         
     }
     
+    private JPanel luoHautausmaa() {
+        JPanel hautausmaa = new JPanel (new GridLayout(1,1));
+        
+        JLabel kuolleet = new JLabel("Kuolleita: "+pelinappulat.getKuolleet());
+        
+        hautausmaa.add(kuolleet);
+        
+        return hautausmaa;
+    }
+    
     private JPanel luoValikonPainikkeet() {
-        JPanel painikkeet = new JPanel (new GridLayout (1,1));
+        JPanel painikkeet = new JPanel (new GridLayout (1,3));
         
-        JButton nappi = new JButton("Seuraava vuoro");
+        JButton vuoronVaihto = new JButton("Seuraava vuoro");
+        seuraavaVuoroKuuntelija kuuntelija = new seuraavaVuoroKuuntelija(pelinappulat, vuoronVaihto, luoUkkopolku());
+        vuoronVaihto.addActionListener(kuuntelija);
         
-        seuraavaVuoroKuuntelija kuuntelija = new seuraavaVuoroKuuntelija(pelinappulat, nappi, luoUkkopolku());
+        painikkeet.add(vuoronVaihto);
         
-        nappi.addActionListener(kuuntelija);
+        JButton nollaa = new JButton("Nollaa");
+        painikkeet.add(nollaa);
         
-        painikkeet.add(nappi);
+        JButton lopeta = new JButton("Lopeta");
+        painikkeet.add(lopeta);
         
         return painikkeet;
     }

@@ -21,16 +21,18 @@ public class seuraavaVuoroKuuntelija implements ActionListener {
     
     private laatikkotd.laatikkotd.Pelinappulat pelinappulat;
     private Component component;
+    private JButton nappi;
     
     public seuraavaVuoroKuuntelija(Pelinappulat pelinappulat, JButton vuoronVaihto, Component component) {
         this.pelinappulat = pelinappulat;
         this.component = component;
+        this.nappi = vuoronVaihto;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        pelinappulat.seuraavaVuoro();
         component.repaint();
+        pelinappulat.seuraavaVuoro();
     }
     
 }
