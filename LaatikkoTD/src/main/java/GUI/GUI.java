@@ -119,7 +119,7 @@ public class GUI implements Runnable {
         painikkeet.add(nollaa);
         
         JButton lopeta = new JButton("Lopeta");
-        painikkeet.add(lopeta);
+        painikkeet.add(lopeta); 
         
         return painikkeet;
     }
