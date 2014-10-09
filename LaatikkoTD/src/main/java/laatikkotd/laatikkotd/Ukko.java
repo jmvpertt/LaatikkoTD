@@ -19,22 +19,19 @@ public class Ukko {
         this.sijainti = sijainti;
         this.elossa = true;
         this.hp = 3;
-        this.merkki = 2;
+        this.merkki = new String("U").charAt(0);
     }
     
     /**
     * Metodi palauttaa ukon sijainnin kokonaislukuna. Arvo on välillä
     * 0-10
     */
-    public int haeSijainti() {
-        if (!this.elossa) {
-            return 99;
-        }
+    public int haeSijainti(){
         return this.sijainti;
     }
     
     /**
-    * Metodi nollaa hp:n ja asettaa sijainniksi 11.
+    * Metodi vähentää hp:ta yhdellä ja ukon kuollessa asettaa elossa-attribuutin falseksi.
     */
     public void haavoita(int voima) {
         this.hp=- voima;
@@ -48,6 +45,7 @@ public class Ukko {
             return true;
         }
         else {
+            this.merkki = new String("X").charAt(0);
             return false;
         }
     }

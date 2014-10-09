@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import laatikkotd.laatikkotd.Pelinappulat;
@@ -39,7 +40,7 @@ public class GUI implements Runnable {
     @Override
     public void run() {
         ikkuna = new JFrame("LaatikkoTD");
-        ikkuna.setPreferredSize(new Dimension(500, 150));
+        ikkuna.setPreferredSize(new Dimension(1000, 300));
 
         ikkuna.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,11 +56,23 @@ public class GUI implements Runnable {
         BoxLayout layout = new BoxLayout(container, BoxLayout.Y_AXIS);
         container.setLayout(layout);
         
+        container.add(luoTekstilaatikko());
         container.add(luoUkkopolku());
         container.add(luoTornirivi());
         container.add(luoHautausmaa());
         container.add(luoValikonPainikkeet());
              
+    }
+    
+    private JPanel luoTekstilaatikko() {
+        JPanel laatikko = new JPanel (new GridLayout(1,1));
+        
+        JTextArea infoTeksti = new JTextArea("Tervetuloa");
+        
+        laatikko.add(infoTeksti);
+        
+        return laatikko;
+        
     }
     
     private JPanel luoUkkopolku() {
@@ -72,7 +85,7 @@ public class GUI implements Runnable {
                     polku.add(ruutu);
                 }
                 else {
-                    JLabel ruutu = new JLabel("_", SwingConstants.CENTER);
+                    JLabel ruutu = new JLabel("[ ]", SwingConstants.CENTER);
                     polku.add(ruutu);
                 }
             }
@@ -86,7 +99,7 @@ public class GUI implements Runnable {
         JPanel rivi = new JPanel (new GridLayout(1,10));
         
         for (int i = 0 ; i < 10 ; i++) {
-            JButton torni = new JButton("_");
+            JButton torni = new JButton("[_]");
             
             TorniKuuntelija kuuntelija  = new TorniKuuntelija(pelinappulat, torni, i);
             torni.addActionListener(kuuntelija);

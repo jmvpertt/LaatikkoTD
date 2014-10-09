@@ -12,12 +12,12 @@ public class Torni {
     
     private int sijainti;
     private int voima;
-    private char merkki;
+    private String merkki;
     
     public Torni(int sijainti) {
         this.sijainti = sijainti;
         this.voima = 2;
-        this.merkki = 1;
+        this.merkki = "T";
     }
     
     /**
@@ -35,6 +35,15 @@ public class Torni {
     */
     public int ammu() {
         return this.voima;
+    }
+    
+    public String haeMerkki() {
+        return this.merkki;
+    }
+    
+    public void ylenna() {
+        this.merkki = this.merkki+"+";
+        this.voima++;
     }
     
 //    @Override
