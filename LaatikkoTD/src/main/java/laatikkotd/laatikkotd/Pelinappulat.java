@@ -86,6 +86,13 @@ public class Pelinappulat {
     public void seuraavaVuoro() {
         for (Ukko i : getUkot()) {
             i.siirra();
+            if (i.haeSijainti() == this.tornit.get(i.haeSijainti()).haeSijainti()) {
+                int laukaus = this.tornit.get(i.haeSijainti()).ammu();
+                i.haavoita(laukaus);
+                if (!i.onkoElossa()) {
+                    lisaaHautausmaalle();
+                }
+            }
         }
         
     }

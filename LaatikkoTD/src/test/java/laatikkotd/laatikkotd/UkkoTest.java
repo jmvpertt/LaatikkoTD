@@ -36,9 +36,9 @@ public class UkkoTest {
     
     @Test
     public void kuollutUkko() {
-        ukko.kuole();
-        ukko.kuole();
-        ukko.kuole();
+        ukko.haavoita();
+        ukko.haavoita();
+        ukko.haavoita();
         assertEquals(11, ukko.haeSijainti());
     }
     
@@ -50,9 +50,9 @@ public class UkkoTest {
     
     @Test
     public void kuollutUkkoEiSiirry() {
-        ukko.kuole();
-        ukko.kuole();
-        ukko.kuole();
+        ukko.haavoita();
+        ukko.haavoita();
+        ukko.haavoita();
         assertEquals(11, ukko.haeSijainti());
         ukko.siirra();
         assertEquals(11, ukko.haeSijainti());

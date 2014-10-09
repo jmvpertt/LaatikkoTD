@@ -10,6 +10,8 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -117,9 +119,16 @@ public class GUI implements Runnable {
         
         JButton nollaa = new JButton("Nollaa");
         painikkeet.add(nollaa);
+        //TODO siirrä omaan metodiin/luokkaan
+        nollaa.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                pelinappulat.getTornit().clear();
+                pelinappulat.getUkot().clear();
+            }
+        });
         
         JButton lopeta = new JButton("Lopeta");
-        painikkeet.add(lopeta); 
+        painikkeet.add(lopeta);
         
         return painikkeet;
     }

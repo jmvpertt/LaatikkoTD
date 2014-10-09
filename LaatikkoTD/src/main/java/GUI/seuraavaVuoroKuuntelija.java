@@ -19,7 +19,7 @@ import java.awt.Component;
  */
 public class seuraavaVuoroKuuntelija implements ActionListener {
     
-    private laatikkotd.laatikkotd.Pelinappulat pelinappulat;
+    private Pelinappulat pelinappulat;
     private Component component;
     private JButton nappi;
     
@@ -31,7 +31,6 @@ public class seuraavaVuoroKuuntelija implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        component.repaint();
         pelinappulat.seuraavaVuoro();
     }
     

@@ -36,9 +36,20 @@ public class Ukko {
     /**
     * Metodi nollaa hp:n ja asettaa sijainniksi 11.
     */
-    public void kuole() {
-        this.hp = 0;
-        this.elossa = false;
+    public void haavoita(int voima) {
+        this.hp=- voima;
+        if (this.hp == 0) {
+            this.elossa = false;
+        }
+    }
+    
+    public boolean onkoElossa() {
+        if (this.elossa) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     
     /**
