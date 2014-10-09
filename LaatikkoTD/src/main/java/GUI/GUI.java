@@ -98,7 +98,7 @@ public class GUI implements Runnable {
         
     }
     
-    private JPanel luoHautausmaa() {
+    private JPanel luoHautausmaa() {        
         JPanel hautausmaa = new JPanel (new GridLayout(1,1));
         
         JLabel kuolleet = new JLabel("Kuolleita: "+pelinappulat.getKuolleet());
@@ -118,16 +118,21 @@ public class GUI implements Runnable {
         painikkeet.add(vuoronVaihto);
         
         JButton nollaa = new JButton("Nollaa");
-        painikkeet.add(nollaa);
-        //TODO siirrä omaan metodiin/luokkaan
         nollaa.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 pelinappulat.getTornit().clear();
                 pelinappulat.getUkot().clear();
+                
             }
         });
+        painikkeet.add(nollaa);
         
         JButton lopeta = new JButton("Lopeta");
+        lopeta.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ikkuna.dispose();
+            }
+        });
         painikkeet.add(lopeta);
         
         return painikkeet;

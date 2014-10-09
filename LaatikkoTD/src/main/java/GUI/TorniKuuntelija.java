@@ -30,6 +30,10 @@ public class TorniKuuntelija implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (this.torni.getText().equals("T")) {
+            this.torni.setText("_");
+            return;
+        }
         Torni torni = new Torni(this.paikka);
         pelinappulat.lisaaTorni(torni);
         this.torni.setText("T");
