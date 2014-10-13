@@ -32,8 +32,7 @@ public class seuraavaVuoroKuuntelija implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        this.pelinappulat.lisaaUkko(new Ukko(1,1));
-        this.component.repaint();
+        
         
     }
     

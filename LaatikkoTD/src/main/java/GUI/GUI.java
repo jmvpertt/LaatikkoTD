@@ -33,9 +33,11 @@ public class GUI implements Runnable {
 
     private JFrame ikkuna;
     private Pelinappulat pelinappulat;
+    private JPanel ukkoPolkuPanel;
 
     public GUI(Pelinappulat pelinappulat) {
         this.pelinappulat = pelinappulat;
+        this.ukkoPolkuPanel = new JPanel(new GridLayout(1,1));
     }
 
     @Override
@@ -57,8 +59,9 @@ public class GUI implements Runnable {
         BoxLayout layout = new BoxLayout(container, BoxLayout.Y_AXIS);
         container.setLayout(layout);
         
+        
         container.add(luoTekstilaatikko());
-        container.add(luoUkkopolku());
+        container.add(luoUkkopolku(this.ukkoPolkuPanel));
         container.add(luoTornirivi());
         container.add(luoHautausmaa());
         container.add(luoValikonPainikkeet());
@@ -76,8 +79,7 @@ public class GUI implements Runnable {
         
     }
     
-    private JPanel luoUkkopolku() {
-        JPanel polku = new JPanel (new GridLayout(1,10));
+    private JPanel luoUkkopolku(JPanel polku) {
                 
         for (int i = 0; i < 10 ; i++) {
             
@@ -120,15 +122,19 @@ public class GUI implements Runnable {
         JPanel painikkeet = new JPanel (new GridLayout (1,3));
         
         JButton vuoronVaihto = new JButton("Seuraava vuoro");
-        seuraavaVuoroKuuntelija kuuntelija = new seuraavaVuoroKuuntelija(pelinappulat, vuoronVaihto, luoUkkopolku());
-        vuoronVaihto.addActionListener(kuuntelija);
+        vuoronVaihto.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                paivitaUkkoPolku();
+            }
+        });
         
         painikkeet.add(vuoronVaihto);
         
-        JButton nollaa = new JButton("Nollaa");
+        final JButton nollaa = new JButton("Nollaa");
         nollaa.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                
+                nollaa.setText("asd");
             }
         });
         painikkeet.add(nollaa);
@@ -146,6 +152,13 @@ public class GUI implements Runnable {
 
     public JFrame getIkkuna() {
         return ikkuna;
+    }
+    
+    public void paivitaUkkoPolku() {
+        this.ukkoPolkuPanel.remove(2);
+        JLabel ruutu = new JLabel("ASD", SwingConstants.CENTER);
+        
+        this.ukkoPolkuPanel.add(ruutu, 2);
     }
     
 }

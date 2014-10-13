@@ -40,6 +40,10 @@ public class Ukko {
         }
     }
     
+    public void setMerkki(String merkki) {
+        this.merkki = merkki;
+    }
+    
     public boolean onkoElossa() {
         if (this.elossa) {
             return true;
