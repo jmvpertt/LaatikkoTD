@@ -122,12 +122,8 @@ public class GUI implements Runnable {
         JPanel painikkeet = new JPanel (new GridLayout (1,3));
         
         JButton vuoronVaihto = new JButton("Seuraava vuoro");
-        vuoronVaihto.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                paivitaUkkoPolku();
-            }
-        });
+        seuraavaVuoroKuuntelija kuuntelija = new seuraavaVuoroKuuntelija(this.pelinappulat, vuoronVaihto, this.ukkoPolkuPanel);
+        vuoronVaihto.addActionListener(kuuntelija);
         
         painikkeet.add(vuoronVaihto);
         
@@ -154,11 +150,13 @@ public class GUI implements Runnable {
         return ikkuna;
     }
     
-    public void paivitaUkkoPolku() {
-        this.ukkoPolkuPanel.remove(2);
-        JLabel ruutu = new JLabel("ASD", SwingConstants.CENTER);
+    public void paivitaUkkoPolku(Pelinappulat pelinappulat) {
+        pelinappulat.setVuoro(1);
+        int i = pelinappulat.getVuoro();
+        JLabel ruutu = new JLabel("U", SwingConstants.CENTER);
         
-        this.ukkoPolkuPanel.add(ruutu, 2);
+        this.ukkoPolkuPanel.remove(i);
+        this.ukkoPolkuPanel.add(ruutu, i);
     }
     
 }

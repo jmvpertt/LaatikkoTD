@@ -17,11 +17,13 @@ public class Pelinappulat {
     private int kuolleet;
     private Ukko[] ukkoArray;
     private Torni[] torniArray;
+    private int vuoro;
     
     public Pelinappulat() {
         this.kuolleet = 0;
         this.ukkoArray = new Ukko[10];
         this.torniArray = new Torni[10];
+        this.vuoro = 0;
     }
     
     /**
@@ -80,6 +82,13 @@ public class Pelinappulat {
     public int getKuolleet() {
         return this.kuolleet;
     }
+    
+    public int getVuoro() {
+        return this.vuoro;
+    }
+    public void setVuoro(int vuoro) {
+        this.vuoro += vuoro;
+    } 
     
     public void seuraavaVuoro() {
         Ukko[] ukkoArrayApu = new Ukko[10];
