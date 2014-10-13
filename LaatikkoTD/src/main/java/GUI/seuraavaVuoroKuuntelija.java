@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import laatikkotd.laatikkotd.Pelinappulat;
 import laatikkotd.laatikkotd.Ukko;
 import java.awt.Component;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import laatikkotd.laatikkotd.Torni;
 
@@ -22,24 +23,27 @@ import laatikkotd.laatikkotd.Torni;
 public class seuraavaVuoroKuuntelija implements ActionListener {
     
     private Pelinappulat pelinappulat;
-    private Component component;
+    private JPanel panel;
     private JButton nappi;
     
-    public seuraavaVuoroKuuntelija(Pelinappulat pelinappulat, JButton vuoronVaihto, Component component) {
+    public seuraavaVuoroKuuntelija(Pelinappulat pelinappulat, JButton vuoronVaihto, JPanel panel) {
         this.pelinappulat = pelinappulat;
-        this.component = component;
+        this.panel = panel;
         this.nappi = vuoronVaihto;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        JLabel ruutu = new JLabel("U", SwingConstants.CENTER);
+        JLabel tyhjaruutu = new JLabel(" ", SwingConstants.CENTER);
+        
         pelinappulat.setVuoro(1);
         int i = pelinappulat.getVuoro();
-        for (int j = 0; i < 10 ; j++) {
-            
-            JLabel ruutu = new JLabel(" ", SwingConstants.CENTER);
-            component.add(ruutu);
-        }
+        
+        panel.remove(i - 1);
+        panel.add(tyhjaruutu, i - 1);
+        panel.remove(i);
+        panel.add(ruutu, i);
         
     }
     
