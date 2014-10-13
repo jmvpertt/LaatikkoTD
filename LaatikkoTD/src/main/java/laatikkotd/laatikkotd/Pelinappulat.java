@@ -15,58 +15,56 @@ import java.util.Arrays;
 public class Pelinappulat {
 
     private int kuolleet;
-    private ArrayList<Ukko> ukot;
-    private ArrayList<Torni> tornit;
+    private Ukko[] ukkoArray;
+    private Torni[] torniArray;
     
     public Pelinappulat() {
         this.kuolleet = 0;
-        this.ukot = new ArrayList<>(20);
-        this.tornit = new ArrayList<>(20);
-        
-        this.ukot.add(new Ukko(0, 1));
+        this.ukkoArray = new Ukko[10];
+        this.torniArray = new Torni[10];
     }
     
     /**
     * Metodi lisää torni-olion ArrayList -listalle
     */
     public void lisaaTorni(Torni torni) {
-        this.tornit.set(torni.haeSijainti(), torni);
+        this.torniArray[torni.haeSijainti()] = torni;
     }
     
     /**
     * Metodi poistaa torni-olion tyhjentämällä koko listan.
     */
     public void poistaTorni(int i) {
-        this.tornit.set(i, null);
+        this.torniArray[i] = null;
     }
     
     /**
     * Metodi lisää ukko-olion ArrayList -listalle
     */
     public void lisaaUkko (Ukko ukko) {
-        this.ukot.set(ukko.haeSijainti(), ukko);
+        this.ukkoArray[ukko.haeSijainti()] = ukko;
     }
     
     /**
     * Metodi poistaa ukko-olion tyhjentämällä koko listan.
     */
     public void poistaUkko(int i) {
-        this.ukot.set(i, null);
+        this.ukkoArray[i] = null;
         this.kuolleet++;
     }
     
     /**
     * Metodi palauttaa ArrayList-listan
     */
-    public ArrayList<Torni> getTornit() {
-        return this.tornit;
+    public Torni[] getTorniArray() {
+        return this.torniArray;
     }
     
     /**
     * Metodi palauttaa ArrayList-listan
     */
-    public ArrayList<Ukko> getUkot() {
-        return this.ukot;
+    public Ukko[] getUkkoArray() {
+        return this.ukkoArray;
     }
     
     /**
@@ -84,22 +82,20 @@ public class Pelinappulat {
     }
     
     public void seuraavaVuoro() {
-        for (Ukko i : getUkot()) {
-            i.siirra();
-            if (i.haeSijainti() == this.tornit.get(i.haeSijainti()).haeSijainti()) {
-                int laukaus = this.tornit.get(i.haeSijainti()).ammu();
-                i.haavoita(laukaus);
-                if (!i.onkoElossa()) {
-                    lisaaHautausmaalle();
-                }
+        Ukko[] ukkoArrayApu = new Ukko[10];
+        for (int i = 0; i < 10; i++) {
+            if (i == 9) {
+                break;
             }
+            ukkoArrayApu[i + 1] = this.ukkoArray[i];
         }
+        this.ukkoArray = ukkoArrayApu.clone();
         
     }
     
     @Override
     public String toString() {
-        return "Ukot: "+this.ukot.size()+", Tornit: "+this.tornit.size()+", Kuolleet: "+this.kuolleet;
+        return "Ukot: "+this.ukkoArray.length+", Tornit: "+this.torniArray.length+", Kuolleet: "+this.kuolleet;
     }
     
 }

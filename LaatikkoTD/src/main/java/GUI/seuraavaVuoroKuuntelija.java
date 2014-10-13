@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import laatikkotd.laatikkotd.Pelinappulat;
 import laatikkotd.laatikkotd.Ukko;
 import java.awt.Component;
+import laatikkotd.laatikkotd.Torni;
 
 /**
  *
@@ -31,9 +32,9 @@ public class seuraavaVuoroKuuntelija implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        pelinappulat.seuraavaVuoro();
-        pelinappulat.lisaaHautausmaalle();
-        component.repaint();
+        this.pelinappulat.lisaaUkko(new Ukko(1,1));
+        this.component.repaint();
+        
     }
     
 }

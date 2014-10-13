@@ -78,20 +78,12 @@ public class GUI implements Runnable {
     
     private JPanel luoUkkopolku() {
         JPanel polku = new JPanel (new GridLayout(1,10));
-        
+                
         for (int i = 0; i < 10 ; i++) {
-            for (Ukko j : pelinappulat.getUkot()) {
-                if (j.haeSijainti() == i) {
-                    JLabel ruutu = new JLabel("U", SwingConstants.CENTER);
-                    polku.add(ruutu);
-                }
-                else {
-                    JLabel ruutu = new JLabel(" ", SwingConstants.CENTER);
-                    polku.add(ruutu);
-                }
-            }
+            
+            JLabel ruutu = new JLabel(" ", SwingConstants.CENTER);
+            polku.add(ruutu);
         }
-        
         
         return polku;
     }
@@ -136,8 +128,6 @@ public class GUI implements Runnable {
         JButton nollaa = new JButton("Nollaa");
         nollaa.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                pelinappulat.getTornit().clear();
-                pelinappulat.getUkot().clear();
                 
             }
         });

@@ -46,8 +46,8 @@ public class Torni {
         this.voima++;
     }
     
-//    @Override
-//    public String toString() {
-//        return ""+this.merkki;
-//    }
+    @Override
+    public String toString() {
+        return ""+this.merkki;
+    }
 }

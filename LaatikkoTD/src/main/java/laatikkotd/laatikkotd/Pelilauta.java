@@ -30,7 +30,7 @@ public class Pelilauta {
     */
     public String piirraUkot() {
         this.ukot = new char[10];
-        for (Ukko i : this.pelialusta.getUkot()) {
+        for (Ukko i : this.pelialusta.getUkkoArray()) {
             String str = "U";
             this.ukot[i.haeSijainti()] = str.charAt(0);
         }
@@ -42,7 +42,7 @@ public class Pelilauta {
     * avulla.
     */
     public String piirraTornit() {
-        for (Torni i : this.pelialusta.getTornit()) {
+        for (Torni i : this.pelialusta.getTorniArray()) {
             String str = "T";
             this.tornit[i.haeSijainti()] = str.charAt(0);
         }
@@ -61,7 +61,7 @@ public class Pelilauta {
     * 
     */
     public void seuraavaVuoro() {
-        for (Ukko i : this.pelialusta.getUkot()) {
+        for (Ukko i : this.pelialusta.getUkkoArray()) {
             i.siirra();
         }
         
