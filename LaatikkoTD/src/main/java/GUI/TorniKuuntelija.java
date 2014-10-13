@@ -19,25 +19,25 @@ import laatikkotd.laatikkotd.Torni;
 public class TorniKuuntelija implements ActionListener {
     
     private Pelinappulat pelinappulat;
-    private JButton torni;
+    private JButton torniButton;
     private int paikka;
     
     public TorniKuuntelija(Pelinappulat pelinappulat, JButton torni, int paikka) {
         this.pelinappulat = pelinappulat;
-        this.torni = torni;
+        this.torniButton = torni;
         this.paikka = paikka;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (this.torni.getText().equals("T")) {
-            pelinappulat.getTornit().get(paikka).ylenna();
-            this.torni.setText(pelinappulat.getTornit().get(paikka).haeMerkki());
-            return;
+        if (this.torniButton.getText().equals(" ")) {
+            this.torniButton.setText("T");
+            this.pelinappulat.lisaaTorni(new Torni(this.paikka));
         }
-        Torni torni = new Torni(this.paikka);
-        pelinappulat.lisaaTorni(torni);
-        this.torni.setText(pelinappulat.getTornit().get(paikka).haeMerkki());
+        else {
+            this.torniButton.setText(" ");
+            this.pelinappulat.poistaTorni(this.paikka);
+        }
     }
     
 }

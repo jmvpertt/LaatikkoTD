@@ -20,8 +20,8 @@ public class Pelinappulat {
     
     public Pelinappulat() {
         this.kuolleet = 0;
-        this.ukot = new ArrayList<>();
-        this.tornit = new ArrayList<>();
+        this.ukot = new ArrayList<>(20);
+        this.tornit = new ArrayList<>(20);
         
         this.ukot.add(new Ukko(0, 1));
     }
@@ -30,28 +30,28 @@ public class Pelinappulat {
     * Metodi lisää torni-olion ArrayList -listalle
     */
     public void lisaaTorni(Torni torni) {
-        this.tornit.add(torni);
+        this.tornit.set(torni.haeSijainti(), torni);
     }
     
     /**
     * Metodi poistaa torni-olion tyhjentämällä koko listan.
     */
     public void poistaTorni(int i) {
-        this.tornit.remove(i);
+        this.tornit.set(i, null);
     }
     
     /**
     * Metodi lisää ukko-olion ArrayList -listalle
     */
     public void lisaaUkko (Ukko ukko) {
-        this.ukot.add(ukko);
+        this.ukot.set(ukko.haeSijainti(), ukko);
     }
     
     /**
     * Metodi poistaa ukko-olion tyhjentämällä koko listan.
     */
     public void poistaUkko(int i) {
-        this.ukot.clear();
+        this.ukot.set(i, null);
         this.kuolleet++;
     }
     

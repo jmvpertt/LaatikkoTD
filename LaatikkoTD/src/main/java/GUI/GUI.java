@@ -12,6 +12,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -85,7 +86,7 @@ public class GUI implements Runnable {
                     polku.add(ruutu);
                 }
                 else {
-                    JLabel ruutu = new JLabel("[ ]", SwingConstants.CENTER);
+                    JLabel ruutu = new JLabel(" ", SwingConstants.CENTER);
                     polku.add(ruutu);
                 }
             }
@@ -98,14 +99,16 @@ public class GUI implements Runnable {
     private JPanel luoTornirivi() {
         JPanel rivi = new JPanel (new GridLayout(1,10));
         
+        
         for (int i = 0 ; i < 10 ; i++) {
-            JButton torni = new JButton("[_]");
+            JButton torniButton = new JButton(" ");
             
-            TorniKuuntelija kuuntelija  = new TorniKuuntelija(pelinappulat, torni, i);
-            torni.addActionListener(kuuntelija);
+            TorniKuuntelija kuuntelija  = new TorniKuuntelija(pelinappulat, torniButton, i);
+            torniButton.addActionListener(kuuntelija);
             
-            rivi.add(torni);
+            rivi.add(torniButton);
         }
+        
         
         return rivi;
         

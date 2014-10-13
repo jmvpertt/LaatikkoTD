@@ -16,7 +16,7 @@ public class Torni {
     
     public Torni(int sijainti) {
         this.sijainti = sijainti;
-        this.voima = 2;
+        this.voima = 1;
         this.merkki = "T";
     }
     
