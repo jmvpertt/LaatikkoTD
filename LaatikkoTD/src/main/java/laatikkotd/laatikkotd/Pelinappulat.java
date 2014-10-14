@@ -19,6 +19,7 @@ public class Pelinappulat {
     private Torni[] torniArray;
     private int vuoro;
     private String tulostusTeksti;
+    private int raha;
     
     public Pelinappulat() {
         this.kuolleet = 0;
@@ -26,15 +27,20 @@ public class Pelinappulat {
         this.torniArray = new Torni[10];
         this.vuoro = 0;
         this.tulostusTeksti = "Tervetuloa";
+        this.raha = 3;
         
-        this.ukkoArray[0] = new Ukko(0, 1);
+        this.ukkoArray[0] = new Ukko(0, 2);
     }
     
     /**
     * Metodi lisää torni-olion ArrayList -listalle
     */
     public void lisaaTorni(int sijainti) {
+        if (this.raha == 0) {
+            return;
+        }
         Torni torni = new Torni(sijainti);
+        this.raha--;
         this.torniArray[torni.haeSijainti()] = torni;
     }
     
@@ -43,6 +49,7 @@ public class Pelinappulat {
     */
     public void poistaTorni(int i) {
         this.torniArray[i] = null;
+        this.raha++;
     }
     
     /**
@@ -77,6 +84,10 @@ public class Pelinappulat {
     */
     public Ukko[] getUkkoArray() {
         return this.ukkoArray;
+    }
+    
+    public int getRahaaJaljella() {
+        return this.raha;
     }
     
     /**
@@ -114,7 +125,10 @@ public class Pelinappulat {
         
         for (int j = 0; j < 10 ; j++) {
             if (this.ukkoArray[j] != null && this.torniArray[j] != null) {
-                poistaUkko(j);
+                this.ukkoArray[j].haavoita(1);
+                if (!this.ukkoArray[j].onkoElossa()) {
+                    poistaUkko(j);
+                }
             }
         }
         
