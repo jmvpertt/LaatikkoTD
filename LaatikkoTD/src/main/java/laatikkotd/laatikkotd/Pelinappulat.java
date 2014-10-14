@@ -26,6 +26,8 @@ public class Pelinappulat {
         this.torniArray = new Torni[10];
         this.vuoro = 0;
         this.tulostusTeksti = "Tervetuloa";
+        
+        this.ukkoArray[0] = new Ukko(0, 1);
     }
     
     /**
@@ -109,6 +111,12 @@ public class Pelinappulat {
             ukkoArrayApu[i + 1] = this.ukkoArray[i];
         }
         this.ukkoArray = ukkoArrayApu.clone();
+        
+        for (int j = 0; j < 10 ; j++) {
+            if (this.ukkoArray[j] != null && this.torniArray[j] != null) {
+                poistaUkko(j);
+            }
+        }
         
     }
     
