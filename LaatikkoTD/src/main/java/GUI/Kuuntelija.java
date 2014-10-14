@@ -66,18 +66,6 @@ public class Kuuntelija implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         
-        if (this.pelinappulat.getRahaaJaljella() == 1) {
-            this.t0.removeActionListener(this);
-            this.t1.removeActionListener(this);
-            this.t2.removeActionListener(this);
-            this.t3.removeActionListener(this);
-            this.t4.removeActionListener(this);
-            this.t5.removeActionListener(this);
-            this.t6.removeActionListener(this);
-            this.t7.removeActionListener(this);
-            this.t8.removeActionListener(this);
-            this.t9.removeActionListener(this);
-        }
         
         if (e.getSource() == this.t0) {
             this.t0.setText("T");
@@ -177,7 +165,7 @@ public class Kuuntelija implements ActionListener{
             }
             
             if (this.pelinappulat.getUkkoArray()[9] != null) {
-                this.info.append("Peli päättyi!");
+                this.info.append("Peli päättyi, hävisit!");
                 this.vuoro.removeActionListener(this);
                 return;
             }
@@ -212,12 +200,28 @@ public class Kuuntelija implements ActionListener{
                 if (i == 0) {
                     this.ukot.add(new JLabel("U", SwingConstants.CENTER), i);
                 }
+                else if (i == 9) {
+                    this.ukot.add(new JLabel("KYLÄ", SwingConstants.CENTER), i);
+                }
                 else {
                     this.ukot.add(new JLabel(" "), i);
                 }
             }
             
             this.info.append("Peli nollattu");
+        }
+        
+        if (this.pelinappulat.getRahaaJaljella() == 0) {
+            this.t0.removeActionListener(this);
+            this.t1.removeActionListener(this);
+            this.t2.removeActionListener(this);
+            this.t3.removeActionListener(this);
+            this.t4.removeActionListener(this);
+            this.t5.removeActionListener(this);
+            this.t6.removeActionListener(this);
+            this.t7.removeActionListener(this);
+            this.t8.removeActionListener(this);
+            this.t9.removeActionListener(this);
         }
         
     }
