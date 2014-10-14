@@ -32,13 +32,6 @@ import laatikkotd.laatikkotd.Ukko;
 public class GUI implements Runnable {
 
     private JFrame ikkuna;
-    private Pelinappulat pelinappulat;
-    private JPanel ukkoPolkuPanel;
-
-    public GUI(Pelinappulat pelinappulat) {
-        this.pelinappulat = pelinappulat;
-        this.ukkoPolkuPanel = new JPanel(new GridLayout(1,1));
-    }
 
     @Override
     public void run() {
@@ -59,30 +52,51 @@ public class GUI implements Runnable {
         BoxLayout layout = new BoxLayout(container, BoxLayout.Y_AXIS);
         container.setLayout(layout);
         
-        container.add(luoTekstilaatikko(this.pelinappulat.getTulostusTeksti()));
-        container.add(luoUkkopolku(this.ukkoPolkuPanel));
-        container.add(luoTornirivi());
-        container.add(luoHautausmaa());
-        container.add(luoValikonPainikkeet());
+        JTextArea infoTeksti = new JTextArea("Tervetuloa");
+        JPanel infoTekstiPanel = new JPanel(new GridLayout(1,1));
+        infoTekstiPanel.add(infoTeksti);
+        
+        JPanel Ukkopolku = luoUkkopolku();
+        JPanel Tornirivi = luoTornirivi();
+        
+        JButton vuoronVaihto = new JButton("Seuraava vuoro");
+        JButton nollaa = new JButton("Nollaa");
+        JButton lopeta = new JButton("Lopeta");
+        
+        JPanel Valikko = new JPanel(new GridLayout(1,3));
+        Valikko.add(vuoronVaihto);
+        Valikko.add(nollaa);
+        Valikko.add(lopeta);
+        
+        JLabel Hautausmaa = new JLabel();
+        
+        Kuuntelija k = new Kuuntelija(infoTeksti, Ukkopolku, Tornirivi, Hautausmaa, Valikko);
+        
+        vuoronVaihto.addActionListener(k);
+        nollaa.addActionListener(k);
+        lopeta.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ikkuna.dispose();
+            }
+        });
+        
+        
+        
+        
+        
+        container.add(infoTekstiPanel);
+        container.add(Ukkopolku);
+        container.add(Tornirivi);
+        container.add(Hautausmaa);
+        container.add(Valikko);
              
     }
     
-    private JPanel luoTekstilaatikko(String teksti) {
-        JPanel laatikko = new JPanel (new GridLayout(1,1));
-        
-        JTextArea infoTeksti = new JTextArea(teksti);
-        
-        laatikko.add(infoTeksti);
-        
-        return laatikko;
-        
-    }
-    
-    private JPanel luoUkkopolku(JPanel polku) {
-                
+    private JPanel luoUkkopolku() {
+        JPanel polku = new JPanel (new GridLayout(1,10));        
         for (int i = 0; i < 10 ; i++) {
             
-            JLabel ruutu = new JLabel(" ", SwingConstants.CENTER);
+            JLabel ruutu = new JLabel(""+i, SwingConstants.CENTER);
             polku.add(ruutu);
         }
         
@@ -92,54 +106,24 @@ public class GUI implements Runnable {
     private JPanel luoTornirivi() {
         JPanel rivi = new JPanel (new GridLayout(1,10));
         
-        
         for (int i = 0 ; i < 10 ; i++) {
-            JButton torniButton = new JButton(" ");
-            
-            TorniKuuntelija kuuntelija  = new TorniKuuntelija(pelinappulat, torniButton, i);
-            torniButton.addActionListener(kuuntelija);
-            
+            JButton torniButton = new JButton(""+i);
             rivi.add(torniButton);
         }
         
-        
         return rivi;
         
-    }
-    
-    private JPanel luoHautausmaa() {        
-        JPanel hautausmaa = new JPanel (new GridLayout(1,1));
-        
-        JLabel kuolleet = new JLabel("Kuolleita: "+pelinappulat.getKuolleet());
-        
-        hautausmaa.add(kuolleet);
-        
-        return hautausmaa;
     }
     
     private JPanel luoValikonPainikkeet() {
         JPanel painikkeet = new JPanel (new GridLayout (1,3));
         
         JButton vuoronVaihto = new JButton("Seuraava vuoro");
-        seuraavaVuoroKuuntelija kuuntelija = new seuraavaVuoroKuuntelija(this.pelinappulat, vuoronVaihto, this.ukkoPolkuPanel);
-        vuoronVaihto.addActionListener(kuuntelija);
+        JButton nollaa = new JButton("Nollaa");
+        JButton lopeta = new JButton("Lopeta");
         
         painikkeet.add(vuoronVaihto);
-        
-        final JButton nollaa = new JButton("Nollaa");
-        nollaa.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                nollaa.setText("asd");
-            }
-        });
         painikkeet.add(nollaa);
-        
-        JButton lopeta = new JButton("Lopeta");
-        lopeta.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ikkuna.dispose();
-            }
-        });
         painikkeet.add(lopeta);
         
         return painikkeet;
@@ -147,15 +131,6 @@ public class GUI implements Runnable {
 
     public JFrame getIkkuna() {
         return ikkuna;
-    }
-    
-    public void paivitaUkkoPolku(Pelinappulat pelinappulat) {
-        pelinappulat.setVuoro(1);
-        int i = pelinappulat.getVuoro();
-        JLabel ruutu = new JLabel("U", SwingConstants.CENTER);
-        
-        this.ukkoPolkuPanel.remove(i);
-        this.ukkoPolkuPanel.add(ruutu, i);
     }
     
 }

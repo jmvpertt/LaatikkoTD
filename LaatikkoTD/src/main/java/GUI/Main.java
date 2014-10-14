@@ -15,8 +15,7 @@ import laatikkotd.laatikkotd.Pelinappulat;
 public class Main {
 
     public static void main(String[] args) {
-        Pelinappulat pn = new Pelinappulat();
-        GUI gui = new GUI(pn);
+        GUI gui = new GUI();
         SwingUtilities.invokeLater(gui);
     }
 }

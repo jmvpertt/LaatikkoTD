@@ -31,7 +31,8 @@ public class Pelinappulat {
     /**
     * Metodi lisää torni-olion ArrayList -listalle
     */
-    public void lisaaTorni(Torni torni) {
+    public void lisaaTorni(int sijainti) {
+        Torni torni = new Torni(sijainti);
         this.torniArray[torni.haeSijainti()] = torni;
     }
     
@@ -45,7 +46,8 @@ public class Pelinappulat {
     /**
     * Metodi lisää ukko-olion ArrayList -listalle
     */
-    public void lisaaUkko (Ukko ukko) {
+    public void lisaaUkko (int sijainti, int hp) {
+        Ukko ukko = new Ukko(sijainti, hp);
         this.ukkoArray[ukko.haeSijainti()] = ukko;
     }
     

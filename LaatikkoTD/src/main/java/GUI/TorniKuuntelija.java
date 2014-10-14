@@ -32,7 +32,7 @@ public class TorniKuuntelija implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (this.torniButton.getText().equals(" ")) {
             this.torniButton.setText("T");
-            this.pelinappulat.lisaaTorni(new Torni(this.paikka));
+            this.pelinappulat.lisaaTorni(this.paikka);
         }
         else {
             this.torniButton.setText(" ");
