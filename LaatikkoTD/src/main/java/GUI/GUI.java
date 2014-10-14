@@ -58,7 +58,7 @@ public class GUI implements Runnable {
         JPanel infoTekstiPanel = new JPanel(new GridLayout(1,1));
         infoTekstiPanel.add(infoTeksti);
         
-        JLabel u0 = new JLabel(" ");
+        JLabel u0 = new JLabel("U", SwingConstants.CENTER);
         JLabel u1 = new JLabel(" ");
         JLabel u2 = new JLabel(" ");
         JLabel u3 = new JLabel(" ");

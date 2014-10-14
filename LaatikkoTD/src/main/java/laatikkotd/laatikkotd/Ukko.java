@@ -18,7 +18,7 @@ public class Ukko {
     public Ukko(int sijainti, int hp) {
         this.sijainti = sijainti;
         this.elossa = true;
-        this.hp = 3;
+        this.hp = hp;
         this.merkki = "U";
     }
     
@@ -35,8 +35,14 @@ public class Ukko {
     */
     public void haavoita(int voima) {
         this.hp=- voima;
-        if (this.hp == 0) {
-            this.elossa = false;
+        if (this.hp == 3) {
+            setMerkki("3");
+        }
+        if (this.hp == 2) {
+            setMerkki("2");
+        }
+        if (this.hp == 1) {
+            setMerkki("1");
         }
     }
     

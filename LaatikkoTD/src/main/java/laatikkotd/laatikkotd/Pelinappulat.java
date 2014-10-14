@@ -20,6 +20,7 @@ public class Pelinappulat {
     private int vuoro;
     private String tulostusTeksti;
     private int raha;
+    private int ukkojenmaara;
     
     public Pelinappulat() {
         this.kuolleet = 0;
@@ -27,7 +28,8 @@ public class Pelinappulat {
         this.torniArray = new Torni[10];
         this.vuoro = 0;
         this.tulostusTeksti = "Tervetuloa";
-        this.raha = 3;
+        this.raha = 4;
+        this.ukkojenmaara = 2;
         
         this.ukkoArray[0] = new Ukko(0, 2);
     }
@@ -107,6 +109,14 @@ public class Pelinappulat {
     public int getVuoro() {
         return this.vuoro;
     }
+    
+    public int getUkkojenMaara() {
+        return this.ukkojenmaara;
+    }
+    
+    public void nollaaVuoro() {
+        this.vuoro = 0;
+    }
     public void setVuoro(int vuoro) {
         seuraavaVuoro();
         this.vuoro += vuoro;
@@ -125,10 +135,10 @@ public class Pelinappulat {
         
         for (int j = 0; j < 10 ; j++) {
             if (this.ukkoArray[j] != null && this.torniArray[j] != null) {
-                this.ukkoArray[j].haavoita(1);
-                if (!this.ukkoArray[j].onkoElossa()) {
-                    poistaUkko(j);
-                }
+//                this.ukkoArray[j].haavoita(1);
+                poistaUkko(j);
+                this.ukkojenmaara--;
+                lisaaUkko(0,2);
             }
         }
         
