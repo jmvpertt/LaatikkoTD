@@ -13,6 +13,7 @@ import laatikkotd.laatikkotd.Pelinappulat;
 import laatikkotd.laatikkotd.Ukko;
 import java.awt.Component;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import laatikkotd.laatikkotd.Torni;
 

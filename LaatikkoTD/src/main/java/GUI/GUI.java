@@ -59,8 +59,7 @@ public class GUI implements Runnable {
         BoxLayout layout = new BoxLayout(container, BoxLayout.Y_AXIS);
         container.setLayout(layout);
         
-        
-        container.add(luoTekstilaatikko());
+        container.add(luoTekstilaatikko(this.pelinappulat.getTulostusTeksti()));
         container.add(luoUkkopolku(this.ukkoPolkuPanel));
         container.add(luoTornirivi());
         container.add(luoHautausmaa());
@@ -68,10 +67,10 @@ public class GUI implements Runnable {
              
     }
     
-    private JPanel luoTekstilaatikko() {
+    private JPanel luoTekstilaatikko(String teksti) {
         JPanel laatikko = new JPanel (new GridLayout(1,1));
         
-        JTextArea infoTeksti = new JTextArea("Tervetuloa");
+        JTextArea infoTeksti = new JTextArea(teksti);
         
         laatikko.add(infoTeksti);
         

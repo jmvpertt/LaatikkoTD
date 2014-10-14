@@ -18,12 +18,14 @@ public class Pelinappulat {
     private Ukko[] ukkoArray;
     private Torni[] torniArray;
     private int vuoro;
+    private String tulostusTeksti;
     
     public Pelinappulat() {
         this.kuolleet = 0;
         this.ukkoArray = new Ukko[10];
         this.torniArray = new Torni[10];
         this.vuoro = 0;
+        this.tulostusTeksti = "Tervetuloa";
     }
     
     /**
@@ -62,6 +64,10 @@ public class Pelinappulat {
         return this.torniArray;
     }
     
+    public String getTulostusTeksti() {
+        return this.tulostusTeksti;
+    }
+    
     /**
     * Metodi palauttaa ArrayList-listan
     */
@@ -87,7 +93,9 @@ public class Pelinappulat {
         return this.vuoro;
     }
     public void setVuoro(int vuoro) {
+        seuraavaVuoro();
         this.vuoro += vuoro;
+        this.tulostusTeksti = this.tulostusTeksti + "Vuoro vaihtui.("+this.vuoro+")";
     } 
     
     public void seuraavaVuoro() {
