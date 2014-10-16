@@ -112,6 +112,8 @@ public class Pelinappulat {
     
     /**
     * Metodi palauttaa kuolleet kokonaislukuna
+    * 
+    * @return kuolleiden määrä.
     */
     public int getKuolleet() {
         return this.kuolleet;
@@ -146,7 +148,7 @@ public class Pelinappulat {
      * on kyseisen indeksin ukko-olio poistetaan tapaUkko -metodilla. Tätä
      * metodia kutsutaan eteneVuoro()-metodissa.
      * 
-     * @see #eteneVuoro()
+     * @see #eteneVuoro() 
      */
     public void seuraavaVuoro() {
         Ukko[] ukkoArrayApu = new Ukko[10];
@@ -194,7 +196,6 @@ public class Pelinappulat {
      *          2 - "Peli päättyi, hävisit!"
      *          3 - "Voitit"
      * 
-     * @see #getRahaaJaljella(),#getVuoro() 
      * 
      */
     
