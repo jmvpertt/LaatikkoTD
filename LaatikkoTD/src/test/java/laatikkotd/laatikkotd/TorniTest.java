@@ -43,6 +43,7 @@ public class TorniTest {
     @Test
     public void ylennysKunJoYlennetty() {
         torni.ylenna();
+        torni.ylenna();
         
         assertEquals(2, torni.getVoima());
         assertEquals("T+", torni.toString());

@@ -5,16 +5,11 @@
  */
 package GUI;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
-import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,8 +18,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
-import laatikkotd.laatikkotd.Pelinappulat;
-import laatikkotd.laatikkotd.Ukko;
 
 /**
  *
@@ -53,7 +46,7 @@ public class GUI implements Runnable {
         BoxLayout layout = new BoxLayout(container, BoxLayout.Y_AXIS);
         container.setLayout(layout);
         
-        JTextArea infoTeksti = new JTextArea("Tervetuloa\n");
+        JTextArea infoTeksti = new JTextArea("Tervetuloa!\n Kun olet valmis, paina Aloita-nappia.");
         infoTeksti.setRows(15);
         JPanel infoTekstiPanel = new JPanel(new GridLayout(1,1));
         infoTekstiPanel.add(infoTeksti);

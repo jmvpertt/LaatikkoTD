@@ -4,8 +4,6 @@
  */
 package laatikkotd.laatikkotd;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -18,24 +16,33 @@ public class Pelinappulat {
     private Ukko[] ukkoArray;
     private Torni[] torniArray;
     private int vuoro;
-    private String tulostusTeksti;
     private int raha;
     private int ukkojenmaara;
+    private String aputeksti;
     
+    /**
+     * Luokka hoitaa keskeisen toimintalogiikan. Ukkojen ja tornien paikka, rahan määrä sekä
+     * mikä vuoro nyt on ovat kaikki tämän luokan hallinnassa. Luokka tarjoaa metodit ukkojen ja
+     * tornien lisäämiseen ja poistamiseen. Konstruktori luo taulukot ukoille ja torneille johon kyseiset
+     * oliot laitetaan.
+     */
     public Pelinappulat() {
         this.kuolleet = 0;
         this.ukkoArray = new Ukko[10];
         this.torniArray = new Torni[10];
         this.vuoro = 0;
-        this.tulostusTeksti = "Tervetuloa";
         this.raha = 4;
         this.ukkojenmaara = 2;
-        
+        this.aputeksti = "";
         
     }
     
     /**
-    * Metodi lisää torni-olion ArrayList -listalle
+    * Metodi lisää torni-olion torniArray-taulukkoon parametrina annetulle
+    * paikalle. Jos raha on loppu, metodi ei tee mitään. Jos paikalla on jo
+    * torni, metodi ylentää sen.
+    * 
+    * @param sijainti lisättävän tornin sijainti torniArray-taulukossa
     */
     public void lisaaTorni(int sijainti) {
         if (this.raha == 0) {
@@ -60,15 +67,11 @@ public class Pelinappulat {
     }
     
     /**
-    * Metodi poistaa torni-olion tyhjentämällä koko listan.
-    */
-    public void poistaTorni(int i) {
-        this.torniArray[i] = null;
-        this.raha++;
-    }
-    
-    /**
-    * Metodi lisää ukko-olion ArrayList -listalle
+    * Metodi lisää ukko-olion ukkoArray-taulukkoon.
+    * 
+    * @param sijainti lisättävän ukon sijainti ukkoArray-taulukossa
+    * @param hp ukon kestämän iskujen määrä
+    * 
     */
     public void lisaaUkko (int sijainti, int hp) {
         Ukko ukko = new Ukko(sijainti, hp);
@@ -76,27 +79,21 @@ public class Pelinappulat {
     }
     
     /**
-    * Metodi poistaa ukko-olion tyhjentämällä koko listan.
+    * Metodi poistaa ukko-olion asettamalla sen sen paikka nulliksi
+    * ukkoArray-taulukossa.
+    * 
+    * @param i poistettavan ukon sijainti ukkoArray-taulukossa.
     */
     public void tapaUkko(int i) {
         this.ukkoArray[i] = null;
         this.kuolleet++;
     }
     
-    /**
-    * Metodi palauttaa ArrayList-listan
-    */
+    
     public Torni[] getTorniArray() {
         return this.torniArray;
     }
     
-    public String getTulostusTeksti() {
-        return this.tulostusTeksti;
-    }
-    
-    /**
-    * Metodi palauttaa ArrayList-listan
-    */
     public Ukko[] getUkkoArray() {
         return this.ukkoArray;
     }
@@ -130,15 +127,33 @@ public class Pelinappulat {
         return this.ukkojenmaara;
     }
     
+    /**
+     * Asetta vuoroksi 0.
+     */
     public void nollaaVuoro() {
         this.vuoro = 0;
     }
-    public void setVuoro(int vuoro) {
+    
+    /**
+     * Metodi kutsuu seuraavaVuoro() -metodia ja lisää this.vuoroon + 1.
+     * 
+     * @see #seuraavaVuoro() 
+     * 
+     */
+    public void eteneVuoro() {
         seuraavaVuoro();
-        this.vuoro += vuoro;
-        this.tulostusTeksti = this.tulostusTeksti + "Vuoro vaihtui.("+this.vuoro+")";
+        this.vuoro ++;
     } 
     
+    /**
+     * Metodi luo aluksi aputaulukon johon se lisää ukkojen uuden sijainnin.
+     * Ukkoarray korvataan tämän jälkeen aputaulukolla. Seuraavaksi tarkistetaan
+     * jos ukkoArray ja torniArray-taulukoissa on samalla indeksillä olio. Jos
+     * on kyseisen indeksin ukko-olio poistetaan tapaUkko -metodilla. Tätä
+     * metodia kutsutaan eteneVuoro()-metodissa.
+     * 
+     * @see #eteneVuoro()
+     */
     public void seuraavaVuoro() {
         Ukko[] ukkoArrayApu = new Ukko[10];
         for (int i = 0; i < 10; i++) {
@@ -151,18 +166,56 @@ public class Pelinappulat {
         
         for (int j = 0; j < 10 ; j++) {
             if (this.ukkoArray[j] != null && this.torniArray[j] != null) {
-//                this.ukkoArray[j].haavoita(1);
-                tapaUkko(j);
-//                this.ukkojenmaara--;
-//                lisaaUkko(0,2);
+                this.getUkkoArray()[j].haavoitu(this.torniArray[j].getVoima());
+                if (this.getUkkoArray()[j].toString().equals("X")) {
+                    tapaUkko(j);
+                }
             }
         }
         
     }
     
-    @Override
-    public String toString() {
-        return "Ukot: "+this.ukkoArray.length+", Tornit: "+this.torniArray.length+", Kuolleet: "+this.kuolleet;
+    /**
+     * Metodi palauttaa halutun tekstin käyttöliittymälle. Neljä eri tekstin-
+     * pätkää. Valitaan numeroilla 0 -3, muut numerot palauttavat tyhjän
+     * merkkijono.
+     * 
+     * @param vaihe 0 - 3 riippuen halutusta tekstistä
+     * @return  0 - "Tervetuloa!\nKun olet valmis, paina Aloita-nappia"
+     *          1 - "Vuoro: int" (vuoron numero)
+     *              "Rahaa: int" (Kuinka paljon rahaa jäljellä
+     *          2 - "Peli päättyi, hävisit!"
+     *          3 - "Voitit"
+     * 
+     * @see #getRahaaJaljella(),#getVuoro() 
+     * 
+     */
+    
+    public String getApuTeksti(int vaihe) {
+        if (vaihe == 0) {
+            this.aputeksti = "Tervetuloa!\nKun olet valmis, paina Aloita-nappia";
+            return this.aputeksti;
+        }
+        else if (vaihe == 1) {
+            this.aputeksti = "Vuoro: "+this.getVuoro()+
+                            "\nRahaa: "+this.getRahaaJaljella()+
+                            "\n"+Arrays.toString(getTorniArray())+
+                            "\n"+Arrays.toString(getUkkoArray())+
+                            "\n\n";
+            return this.aputeksti;
+        }
+        else if (vaihe == 2) {
+            this.aputeksti = "Peli päättyi, hävisit!";
+            return this.aputeksti;
+        }
+        else if (vaihe == 3) {
+            this.aputeksti = "Voitit!";
+            return this.aputeksti;
+        }
+        else {
+            return "";
+        }
+        
     }
     
 }

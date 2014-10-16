@@ -91,6 +91,6 @@ public class PelinappulatTest {
         assertEquals(1, pelinappulat.getKuolleet());
         assertEquals("[null, null, null, null, null, null, null, null, null, null]", Arrays.toString(this.pelinappulat.getUkkoArray()));
         assertEquals("[null, null, T, null, null, null, null, null, null, null]", Arrays.toString(this.pelinappulat.getTorniArray()));
-    }    
+    }
     
 }

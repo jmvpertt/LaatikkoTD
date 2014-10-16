@@ -51,113 +51,89 @@ public class Kuuntelija implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         
-        for (int i = 0; i < 10; i++) {
-            if (e.getSource() == this.tornit.getComponent(i)) {
-                this.pelinappulat.lisaaTorni(i);
-                this.tornit.removeAll();
-                for (int j = 0; j < 10; j++) {
-                    if (this.pelinappulat.getTorniArray()[j] != null) {
-                        String merkki = this.pelinappulat.getTorniArray()[j].toString();
-                        JButton tornipaikka = new JButton(merkki);
-                        if (this.pelinappulat.getRahaaJaljella() > 0) {
-                            tornipaikka.addActionListener(this);
-                        }
-                        this.tornit.add(tornipaikka);
-                    }
-                    else {
-                        JButton tornipaikka = new JButton(""+j);
-                        tornipaikka.addActionListener(this);
-                        this.tornit.add(tornipaikka);
-                    }
-                    
-                }
-                this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
-            }
-        }
+        torniNappi(e);
         
         if (e.getSource() == this.vuoro) {
-            this.vuoro.setText("Seuraava vuoro ("+this.pelinappulat.getVuoro()+")");
-
-            this.pelinappulat.setVuoro(1);
-            this.ukot.removeAll();
-            
-            for (int j = 0; j < 10; j++) {
-                if (this.pelinappulat.getUkkoArray()[j] != null) {
-                    String merkki = this.pelinappulat.getUkkoArray()[j].toString();
-                    JLabel paikka = new JLabel(merkki, SwingConstants.CENTER);
-                    this.ukot.add(paikka);
-                }
-                else {
-                    String merkki = " ";
-                    JLabel paikka = new JLabel(merkki, SwingConstants.CENTER);
-                    this.ukot.add(paikka);
-                }
-            }
-            
-            this.ukot.validate();
+            this.pelinappulat.eteneVuoro();
+            paivitaUkot();
             
             if (this.pelinappulat.getUkkoArray()[9] != null) {
-                this.info.append("Peli päättyi, hävisit!");
+                this.info.setText(this.pelinappulat.getApuTeksti(2));
                 this.vuoro.removeActionListener(this);
                 return;
             }
             
             if (this.pelinappulat.getVuoro() == 9) {
-                this.info.append("\n\nVoitit!");
+                this.info.setText(this.pelinappulat.getApuTeksti(3));
                 this.vuoro.removeActionListener(this);
                 return;
             }
             
-            this.info.append("Vuoro vaihtui"+Arrays.toString(this.pelinappulat.getTorniArray())+" "+Arrays.toString(this.pelinappulat.getUkkoArray()) +"\n");
+            this.info.setText(this.pelinappulat.getApuTeksti(1)+"Vuoro vaihtui.");
         }
         
         else if (e.getSource() == this.nollaa) {
             
-            if (this.pelinappulat.getVuoro() == 0) {
-                this.pelinappulat.lisaaUkko(0, 2);
-                
-                for (int i = 0; i < 10 ; i++) {
-                    this.tornit.removeAll();
-                    for (int j = 0; j < 10; j++) {
-                        if (this.pelinappulat.getTorniArray()[j] != null) {
-                            String merkki = this.pelinappulat.getTorniArray()[j].toString();
-                            JButton tornipaikka = new JButton(merkki);
-                            tornipaikka.addActionListener(this);
-                            this.tornit.add(tornipaikka);
-                        }
-                        else {
-                            JButton tornipaikka = new JButton(""+j);
-                            tornipaikka.addActionListener(this);
-                            this.tornit.add(tornipaikka);
-                        }
-                    
-                    }
-                }
-                this.nollaa.setText("Nollaa");
-            }
-            else {
-                this.pelinappulat = new Pelinappulat();
+            this.pelinappulat = new Pelinappulat();
+            this.pelinappulat.lisaaUkko(0, 2);
+            this.ukot.add(new JLabel("U", SwingConstants.CENTER), 0);
             
-                this.vuoro.addActionListener(this);
-                this.vuoro.setText("Seuraava vuoro ("+this.pelinappulat.getVuoro()+")");
+            this.info.setText(this.pelinappulat.getApuTeksti(0));
+            paivitaUkot();
+            paivitaTornit();
             
-                for (int i = 0 ; i < 10 ; i++) {
-                    this.ukot.remove(i);
-                    if (i == 0) {
-                        this.ukot.add(new JLabel("U", SwingConstants.CENTER), i);
-                    }
-                    else if (i == 9) {
-                        this.ukot.add(new JLabel("KYLÄ", SwingConstants.CENTER), i);
-                    }
-                    else {
-                        this.ukot.add(new JLabel(" "), i);
-                    }
-                }
+            this.nollaa.setText("Aloita/Nollaa");
             
-                this.info.append("Peli nollattu");
-            }
         }
         
+    }
+    
+    private void torniNappi(ActionEvent e) {
+        for (int i = 0; i < 10; i++) {
+            if (e.getSource() == this.tornit.getComponent(i)) {
+                this.pelinappulat.lisaaTorni(i);
+                paivitaTornit();
+                this.info.setText(this.pelinappulat.getApuTeksti(1)+"Torni lisätty.");
+            }
+        }
+    }
+    
+    private void paivitaTornit() {
+        this.tornit.removeAll();
+            for (int j = 0; j < 10; j++) {
+                if (this.pelinappulat.getTorniArray()[j] != null) {
+                    String merkki = this.pelinappulat.getTorniArray()[j].toString();
+                    JButton tornipaikka = new JButton(merkki);
+                    if (this.pelinappulat.getRahaaJaljella() > 0) {
+                        tornipaikka.addActionListener(this);
+                    }
+                    this.tornit.add(tornipaikka);
+                }
+                else {
+                    JButton tornipaikka = new JButton(""+j);
+                    tornipaikka.addActionListener(this);
+                    this.tornit.add(tornipaikka);
+                }
+                
+            }
+        this.tornit.validate();
+    }
+    
+    private void paivitaUkot() {
+        this.ukot.removeAll();
+        for (int j = 0; j < 10; j++) {
+            if (this.pelinappulat.getUkkoArray()[j] != null) {
+                String merkki = this.pelinappulat.getUkkoArray()[j].toString();
+                JLabel paikka = new JLabel(merkki, SwingConstants.CENTER);
+                this.ukot.add(paikka);
+            }
+            else {
+                String merkki = " ";
+                JLabel paikka = new JLabel(merkki, SwingConstants.CENTER);
+                this.ukot.add(paikka);
+            }
+        }
+        this.ukot.validate();
     }
     
     

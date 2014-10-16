@@ -40,4 +40,10 @@ public class UkkoTest {
         assertEquals(2, ukko.getSijainti());
     }
     
+    @Test
+    public void merkinVaihtoToimii() {
+        ukko.setMerkki("asdf");
+        assertEquals("asdf", ukko.toString());
+    }
+    
 }
