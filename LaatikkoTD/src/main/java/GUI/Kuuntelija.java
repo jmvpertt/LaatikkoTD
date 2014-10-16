@@ -68,62 +68,62 @@ public class Kuuntelija implements ActionListener{
         
         
         if (e.getSource() == this.t0) {
-            this.t0.setText("T");
             this.pelinappulat.lisaaTorni(0);
-            this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
+            this.t0.setText(this.pelinappulat.getTorniArray()[0].toString());
+            this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella()+" "+this.pelinappulat.getTorniArray()[0].toString());
         }
         
         else if (e.getSource() == this.t1) {
-            this.t1.setText("T");
             this.pelinappulat.lisaaTorni(1);
+            this.t1.setText(this.pelinappulat.getTorniArray()[1].toString());
             this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
         }
         
         else if (e.getSource() == this.t2) {
-            this.t2.setText("T");
             this.pelinappulat.lisaaTorni(2);
+            this.t2.setText(this.pelinappulat.getTorniArray()[2].toString());
             this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
         }
         
         else if (e.getSource() == this.t3) {
-            this.t3.setText("T");
             this.pelinappulat.lisaaTorni(3);
+            this.t3.setText(this.pelinappulat.getTorniArray()[3].toString());
             this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
         }
         
         else if (e.getSource() == this.t4) {
-            this.t4.setText("T");
             this.pelinappulat.lisaaTorni(4);
+            this.t4.setText(this.pelinappulat.getTorniArray()[4].toString());
             this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
         }
         
         else if (e.getSource() == this.t5) {
-            this.t5.setText("T");
             this.pelinappulat.lisaaTorni(5);
+            this.t5.setText(this.pelinappulat.getTorniArray()[5].toString());
             this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
         }
         
         else if (e.getSource() == this.t6) {
-            this.t6.setText("T");
             this.pelinappulat.lisaaTorni(6);
+            this.t6.setText(this.pelinappulat.getTorniArray()[6].toString());
             this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
         }
         
         else if (e.getSource() == this.t7) {
-            this.t7.setText("T");
             this.pelinappulat.lisaaTorni(7);
+            this.t7.setText(this.pelinappulat.getTorniArray()[7].toString());
             this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
         }
         
         else if (e.getSource() == this.t8) {
-            this.t8.setText("T");
             this.pelinappulat.lisaaTorni(8);
+            this.t8.setText(this.pelinappulat.getTorniArray()[8].toString());
             this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
         }
         
         else if (e.getSource() == this.t9) {
-            this.t9.setText("T");
             this.pelinappulat.lisaaTorni(9);
+            this.t9.setText(this.pelinappulat.getTorniArray()[9].toString());
             this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
         }
         

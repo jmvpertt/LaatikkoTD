@@ -41,9 +41,22 @@ public class Pelinappulat {
         if (this.raha == 0) {
             return;
         }
-        Torni torni = new Torni(sijainti);
-        this.raha--;
-        this.torniArray[torni.getSijainti()] = torni;
+        else if (this.torniArray[sijainti] != null) {
+            if (this.torniArray[sijainti].toString().equals("T")) {
+                Torni torni = new Torni(sijainti);
+                torni.ylenna();
+                this.raha--;
+                this.torniArray[sijainti] = torni;
+            }
+        }
+//        else if (this.torniArray[sijainti].toString() == "T+") {
+//            return;
+//        }
+        else {
+            Torni torni = new Torni(sijainti);
+            this.raha--;
+            this.torniArray[sijainti] = torni;
+        }
     }
     
     /**
