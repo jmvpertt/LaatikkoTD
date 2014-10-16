@@ -17,7 +17,6 @@ public class Pelinappulat {
     private Torni[] torniArray;
     private int vuoro;
     private int raha;
-    private int ukkojenmaara;
     private String aputeksti;
     
     /**
@@ -32,7 +31,6 @@ public class Pelinappulat {
         this.torniArray = new Torni[10];
         this.vuoro = 0;
         this.raha = 4;
-        this.ukkojenmaara = 2;
         this.aputeksti = "";
         
     }
@@ -123,12 +121,8 @@ public class Pelinappulat {
         return this.vuoro;
     }
     
-    public int getUkkojenMaara() {
-        return this.ukkojenmaara;
-    }
-    
     /**
-     * Asetta vuoroksi 0.
+     * Asettaa vuoroksi 0.
      */
     public void nollaaVuoro() {
         this.vuoro = 0;
@@ -160,18 +154,31 @@ public class Pelinappulat {
             if (i == 9) {
                 break;
             }
+            else if (this.ukkoArray[i] != null) {
+                this.ukkoArray[i].siirra();
+            }
             ukkoArrayApu[i + 1] = this.ukkoArray[i];
         }
         this.ukkoArray = ukkoArrayApu.clone();
         
         for (int j = 0; j < 10 ; j++) {
             if (this.ukkoArray[j] != null && this.torniArray[j] != null) {
-                this.getUkkoArray()[j].haavoitu(this.torniArray[j].getVoima());
-                if (this.getUkkoArray()[j].toString().equals("X")) {
+                int hp = this.ukkoArray[j].getHp();
+                int voima = this.torniArray[j].getVoima();
+                if (hp - voima > 1) {
+                    this.getUkkoArray()[j] = new Ukko(j, hp);
+                    this.getUkkoArray()[j].setMerkki("u");
+                }
+                else if (hp - voima == 1) {
+                    this.getUkkoArray()[j] = new Ukko(j, 1);
+                    this.getUkkoArray()[j].setMerkki("X");
+                }
+                else if (hp - voima <= 0) {
                     tapaUkko(j);
                 }
             }
         }
+        
         
     }
     
@@ -199,6 +206,7 @@ public class Pelinappulat {
         else if (vaihe == 1) {
             this.aputeksti = "Vuoro: "+this.getVuoro()+
                             "\nRahaa: "+this.getRahaaJaljella()+
+                            "\nKuolleita: "+this.getKuolleet()+
                             "\n"+Arrays.toString(getTorniArray())+
                             "\n"+Arrays.toString(getUkkoArray())+
                             "\n\n";

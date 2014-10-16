@@ -45,8 +45,10 @@ public class Ukko {
     public void haavoitu(int hp) {
         if ((this.hp - hp) > 1) {
             this.hp = this.hp - hp;
+            this.merkki = "u";
         }
         else if ((this.hp - hp) <= 0) {
+            this.hp = 0;
             setMerkki("X");
         }
     }
