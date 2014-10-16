@@ -25,8 +25,8 @@ public class Taso {
     }
     
     public void generoiTaso() {
-        pelinappulat.lisaaTorni(new Torni(5));
-        pelinappulat.lisaaUkko(new Ukko(3,1));
+        pelinappulat.lisaaTorni(5);
+        pelinappulat.lisaaUkko(3,1);
     }
     
     @Override

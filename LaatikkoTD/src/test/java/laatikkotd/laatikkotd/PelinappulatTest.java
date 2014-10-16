@@ -4,6 +4,7 @@
  */
 package laatikkotd.laatikkotd;
 
+import java.util.Arrays;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,36 +18,79 @@ import static org.junit.Assert.*;
  */
 public class PelinappulatTest {
     
-    public PelinappulatTest() {
-    }
-    
-    Pelinappulat pelialusta;
+    Pelinappulat pelinappulat;
     
     @Before
     public void setUp() {
-        pelialusta = new Pelinappulat();
+        pelinappulat = new Pelinappulat();
     }
     
     @Test
-    public void alkuasetelmaOikein() {
-        assertEquals(0, pelialusta.getKuolleet());
+    public void konstruktoriToimii() {
+        assertEquals(0, pelinappulat.getKuolleet());
+        assertEquals(0, pelinappulat.getVuoro());
+        assertEquals(4, pelinappulat.getRahaaJaljella());
+        assertEquals("[null, null, null, null, null, null, null, null, null, null]", Arrays.toString(this.pelinappulat.getUkkoArray()));
+        assertEquals("[null, null, null, null, null, null, null, null, null, null]", Arrays.toString(this.pelinappulat.getTorniArray()));
+        
     }
     
     @Test
-    public void tapaUkko() {
-        pelialusta.lisaaUkko(new Ukko(1,1));
-        pelialusta.poistaUkko(1);
-        assertEquals(1, pelialusta.getKuolleet());
+    public void torninLisaysKunRahaa() {
+        
+        pelinappulat.lisaaTorni(1);
+        
+        assertEquals(3, pelinappulat.getRahaaJaljella());
+        assertEquals(1, pelinappulat.getTorniArray()[1].getSijainti());
+        assertEquals("[null, T, null, null, null, null, null, null, null, null]", Arrays.toString(this.pelinappulat.getTorniArray()));
     }
     
     @Test
-    public void tapaToinenUkko() {
-        pelialusta.lisaaUkko(new Ukko(1,1));
-        pelialusta.lisaaUkko(new Ukko(3,1));
-        pelialusta.poistaUkko(1);
-        pelialusta.poistaUkko(3);
-        assertEquals(2, pelialusta.getKuolleet());
+    public void torninLisaysKunRahatLoppu() {
+        pelinappulat.setRaha(0);
+        pelinappulat.lisaaTorni(1);
+        
+        assertEquals(0, pelinappulat.getRahaaJaljella());
+        assertEquals("[null, null, null, null, null, null, null, null, null, null]", Arrays.toString(this.pelinappulat.getTorniArray()));
     }
     
-   
+    @Test
+    public void ukonLisaysToimii() {
+        pelinappulat.lisaaUkko(3, 2);
+        
+        assertEquals(3, pelinappulat.getUkkoArray()[3].getSijainti());
+        assertEquals(2, pelinappulat.getUkkoArray()[3].getHp());
+        assertEquals("[null, null, null, U, null, null, null, null, null, null]", Arrays.toString(this.pelinappulat.getUkkoArray()));
+    }
+    
+    @Test
+    public void ukonTappoToimii() {
+        pelinappulat.lisaaUkko(3, 2);
+        pelinappulat.tapaUkko(3);
+        
+        assertEquals("[null, null, null, null, null, null, null, null, null, null]", Arrays.toString(this.pelinappulat.getUkkoArray()));
+        assertEquals(1, pelinappulat.getKuolleet());
+    }
+    
+    @Test
+    public void vuoronVaihtoToimiiKunUkkoEiKuole() {
+        pelinappulat.lisaaUkko(1, 2);
+        assertEquals("[null, U, null, null, null, null, null, null, null, null]", Arrays.toString(this.pelinappulat.getUkkoArray()));
+        pelinappulat.seuraavaVuoro();
+        assertEquals("[null, null, U, null, null, null, null, null, null, null]", Arrays.toString(this.pelinappulat.getUkkoArray()));
+    }
+    
+    @Test
+    public void vuoronVaihtoToimiiKunUkkoKuolee() {
+        pelinappulat.lisaaUkko(1, 2);
+        assertEquals("[null, U, null, null, null, null, null, null, null, null]", Arrays.toString(this.pelinappulat.getUkkoArray()));
+        pelinappulat.lisaaTorni(2);
+        assertEquals("[null, null, T, null, null, null, null, null, null, null]", Arrays.toString(this.pelinappulat.getTorniArray()));
+        pelinappulat.seuraavaVuoro();
+        
+        assertEquals(1, pelinappulat.getKuolleet());
+        assertEquals("[null, null, null, null, null, null, null, null, null, null]", Arrays.toString(this.pelinappulat.getUkkoArray()));
+        assertEquals("[null, null, T, null, null, null, null, null, null, null]", Arrays.toString(this.pelinappulat.getTorniArray()));
+    }    
+    
 }

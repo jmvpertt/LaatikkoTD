@@ -24,7 +24,7 @@ public class Torni {
     * Metodi palauttaa tornin sijainnin kokonaislukuna. Arvo on välillä
     * 0-10
     */
-    public int haeSijainti() {
+    public int getSijainti() {
         return this.sijainti;
     }
     
@@ -33,7 +33,7 @@ public class Torni {
     * 
     * @return this.voima (int)
     */
-    public int ammu() {
+    public int getVoima() {
         return this.voima;
     }
     
@@ -42,6 +42,9 @@ public class Torni {
     }
     
     public void ylenna() {
+        if (this.merkki == "T+") {
+            return;
+        }
         this.merkki = this.merkki+"+";
         this.voima++;
     }

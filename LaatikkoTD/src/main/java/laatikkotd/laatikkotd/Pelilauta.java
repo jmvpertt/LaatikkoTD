@@ -32,7 +32,7 @@ public class Pelilauta {
         this.ukot = new char[10];
         for (Ukko i : this.pelialusta.getUkkoArray()) {
             String str = "U";
-            this.ukot[i.haeSijainti()] = str.charAt(0);
+            this.ukot[i.getSijainti()] = str.charAt(0);
         }
         return Arrays.toString(this.ukot);
     }
@@ -44,7 +44,7 @@ public class Pelilauta {
     public String piirraTornit() {
         for (Torni i : this.pelialusta.getTorniArray()) {
             String str = "T";
-            this.tornit[i.haeSijainti()] = str.charAt(0);
+            this.tornit[i.getSijainti()] = str.charAt(0);
         }
         return Arrays.toString(this.tornit);
     }

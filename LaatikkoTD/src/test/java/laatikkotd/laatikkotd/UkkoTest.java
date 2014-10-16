@@ -18,50 +18,26 @@ import static org.junit.Assert.*;
  */
 public class UkkoTest {
     
-    public UkkoTest() {
-    }
     
-    Ukko ukko = new Ukko(0, 3);
+    
+    Ukko ukko;
     
     @Before
     public void setUp() {
-        Ukko ukko = new Ukko(0, 3);
+        ukko = new Ukko(1, 2);
     }
     
     @Test
-    public void alkuasetelmaOikein() {
-        assertEquals(0, ukko.haeSijainti());
-        assertEquals(3, ukko.getHp());
-    }
-    
-    @Test
-    public void kuollutUkko() {
-        ukko.haavoita();
-        ukko.haavoita();
-        ukko.haavoita();
-        assertEquals(11, ukko.haeSijainti());
+    public void konstruktoriToimii() {
+        assertEquals(1, ukko.getSijainti());
+        assertEquals(2, ukko.getHp());
+        assertEquals("U", ukko.toString());
     }
     
     @Test
     public void siirraUkkoa() {
         ukko.siirra();
-        assertEquals(1, ukko.haeSijainti());
-    }
-    
-    @Test
-    public void kuollutUkkoEiSiirry() {
-        ukko.haavoita();
-        ukko.haavoita();
-        ukko.haavoita();
-        assertEquals(11, ukko.haeSijainti());
-        ukko.siirra();
-        assertEquals(11, ukko.haeSijainti());
-    }
-    
-    @Test
-    public void haeUkonSijainti() {
-        Ukko ukko2 = new Ukko(4, 3);
-        assertEquals(4, ukko2.haeSijainti());
+        assertEquals(2, ukko.getSijainti());
     }
     
 }

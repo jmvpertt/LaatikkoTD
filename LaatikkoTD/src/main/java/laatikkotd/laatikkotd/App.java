@@ -10,8 +10,8 @@ public class App
         
         Pelinappulat pelialusta = new Pelinappulat();
         Pelilauta pelilauta = new Pelilauta(pelialusta);
-        pelialusta.lisaaUkko(new Ukko(3,1));
-        pelialusta.lisaaTorni(new Torni(4));
+        pelialusta.lisaaUkko(3,1);
+        pelialusta.lisaaTorni(4);
 
         pelilauta.piirraLauta();
         pelilauta.seuraavaVuoro();

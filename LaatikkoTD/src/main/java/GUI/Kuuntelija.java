@@ -176,7 +176,7 @@ public class Kuuntelija implements ActionListener{
                 return;
             }
             
-            this.info.append("Vuoro vaihtui"/*+Arrays.toString(this.pelinappulat.getTorniArray())+" "+Arrays.toString(this.pelinappulat.getUkkoArray())*/ +"\n");
+            this.info.append("Vuoro vaihtui"+Arrays.toString(this.pelinappulat.getTorniArray())+" "+Arrays.toString(this.pelinappulat.getUkkoArray()) +"\n");
         }
         
         else if (e.getSource() == this.nollaa) {

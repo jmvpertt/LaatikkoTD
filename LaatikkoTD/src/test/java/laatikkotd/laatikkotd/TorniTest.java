@@ -18,25 +18,34 @@ import static org.junit.Assert.*;
  */
 public class TorniTest {
     
-    public TorniTest() {
-    }
+    Torni torni;
 
-    Torni torni = new Torni(1);
-    
     @Before
     public void setUp() {
-        Torni torni = new Torni(1);
+        torni = new Torni(1);
     }
     
     @Test
-    public void alkuasetelmaOikein() {
-        assertEquals(1, torni.haeSijainti());
+    public void konstruktoriToimii() {
+        assertEquals(1, torni.getSijainti());
+        assertEquals(1, torni.getVoima());
+        assertEquals("T", torni.toString());
     }
     
     @Test
-    public void torninSijainti() {
-        Torni torni2 = new Torni(2);
-        assertEquals(2, torni2.haeSijainti());
+    public void ylennysKunNormaali() {
+        torni.ylenna();
+        
+        assertEquals(2, torni.getVoima());
+        assertEquals("T+", torni.toString());
+    }
+    
+    @Test
+    public void ylennysKunJoYlennetty() {
+        torni.ylenna();
+        
+        assertEquals(2, torni.getVoima());
+        assertEquals("T+", torni.toString());
     }
 
 }

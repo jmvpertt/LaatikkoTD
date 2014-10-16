@@ -31,7 +31,7 @@ public class Pelinappulat {
         this.raha = 4;
         this.ukkojenmaara = 2;
         
-        this.ukkoArray[0] = new Ukko(0, 2);
+//        this.ukkoArray[0] = new Ukko(0, 2);
     }
     
     /**
@@ -43,7 +43,7 @@ public class Pelinappulat {
         }
         Torni torni = new Torni(sijainti);
         this.raha--;
-        this.torniArray[torni.haeSijainti()] = torni;
+        this.torniArray[torni.getSijainti()] = torni;
     }
     
     /**
@@ -59,13 +59,13 @@ public class Pelinappulat {
     */
     public void lisaaUkko (int sijainti, int hp) {
         Ukko ukko = new Ukko(sijainti, hp);
-        this.ukkoArray[ukko.haeSijainti()] = ukko;
+        this.ukkoArray[ukko.getSijainti()] = ukko;
     }
     
     /**
     * Metodi poistaa ukko-olion tyhjentämällä koko listan.
     */
-    public void poistaUkko(int i) {
+    public void tapaUkko(int i) {
         this.ukkoArray[i] = null;
         this.kuolleet++;
     }
@@ -92,6 +92,9 @@ public class Pelinappulat {
         return this.raha;
     }
     
+    public void setRaha(int summa) {
+        this.raha = summa;
+    }
     /**
     * Metodi lisää +1 hautausmaalle.
     */
@@ -136,9 +139,9 @@ public class Pelinappulat {
         for (int j = 0; j < 10 ; j++) {
             if (this.ukkoArray[j] != null && this.torniArray[j] != null) {
 //                this.ukkoArray[j].haavoita(1);
-                poistaUkko(j);
-                this.ukkojenmaara--;
-                lisaaUkko(0,2);
+                tapaUkko(j);
+//                this.ukkojenmaara--;
+//                lisaaUkko(0,2);
             }
         }
         
