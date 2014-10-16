@@ -13,3 +13,5 @@ Pelaajalla on tietty määrä vuoroja ehtiä tuhota ukko. Jos ukko pääsee viim
 vuorolla ei ole ukkoja viimeisessä ruudussa, pelaaja voittaa.
 
 Tekstikenttä kertoo mitä pelissä kulloinkin tapahtuu.
+
+Pelin voi lopettaa koska tahansa painamalla "Lopeta"-nappia.
