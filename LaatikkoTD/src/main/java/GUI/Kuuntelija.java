@@ -25,6 +25,7 @@ public class Kuuntelija implements ActionListener{
     private Pelinappulat pelinappulat;
     private JTextArea info;
     private JPanel ukot;
+    private JPanel tornit;
     private JButton t0;
     private JButton t1;
     private JButton t2;
@@ -42,10 +43,11 @@ public class Kuuntelija implements ActionListener{
     
     
     
-    public Kuuntelija (JTextArea info, JPanel ukot, JButton t0, JButton t1, JButton t2, JButton t3, JButton t4, JButton t5, JButton t6, JButton t7, JButton t8, JButton t9, JButton vuoro, JButton nollaa, JButton lopeta, JFrame ikkuna) {
+    public Kuuntelija (JTextArea info, JPanel ukot, JPanel tornit, JButton t0, JButton t1, JButton t2, JButton t3, JButton t4, JButton t5, JButton t6, JButton t7, JButton t8, JButton t9, JButton vuoro, JButton nollaa, JButton lopeta, JFrame ikkuna) {
         this.pelinappulat = new Pelinappulat();
         this.info = info;
         this.ukot = ukot;
+        this.tornit = tornit;
         this.t0 = t0;
         this.t1 = t1;
         this.t2 = t2;
@@ -66,104 +68,131 @@ public class Kuuntelija implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         
-        
-        if (e.getSource() == this.t0) {
-            this.pelinappulat.lisaaTorni(0);
-            this.t0.setText(this.pelinappulat.getTorniArray()[0].toString());
-            this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella()+" "+this.pelinappulat.getTorniArray()[0].toString());
+        for (int i = 0; i < 10; i++) {
+            if (e.getSource() == this.tornit.getComponent(i)) {
+                this.pelinappulat.lisaaTorni(i);
+                this.tornit.removeAll();
+                for (int j = 0; j < 10; j++) {
+                    if (this.pelinappulat.getTorniArray()[j] != null) {
+                        String merkki = this.pelinappulat.getTorniArray()[j].toString();
+                        JButton tornipaikka = new JButton(merkki);
+                        tornipaikka.addActionListener(this);
+                        this.tornit.add(tornipaikka);
+                    }
+                    else {
+                        JButton tornipaikka = new JButton(""+j);
+                        tornipaikka.addActionListener(this);
+                        this.tornit.add(tornipaikka);
+                    }
+                    
+                }
+                this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
+            }
         }
+//        if (e.getSource() == this.t0) {
+//            this.pelinappulat.lisaaTorni(0);
+//            this.t0.setText(this.pelinappulat.getTorniArray()[0].toString());
+//            this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella()+" "+this.pelinappulat.getTorniArray()[0].toString());
+//        }
+//        
+//        else if (e.getSource() == this.t1) {
+//            this.pelinappulat.lisaaTorni(1);
+//            this.t1.setText(this.pelinappulat.getTorniArray()[1].toString());
+//            this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
+//        }
+//        
+//        else if (e.getSource() == this.t2) {
+//            this.pelinappulat.lisaaTorni(2);
+//            this.t2.setText(this.pelinappulat.getTorniArray()[2].toString());
+//            this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
+//        }
+//        
+//        else if (e.getSource() == this.t3) {
+//            this.pelinappulat.lisaaTorni(3);
+//            this.t3.setText(this.pelinappulat.getTorniArray()[3].toString());
+//            this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
+//        }
+//        
+//        else if (e.getSource() == this.t4) {
+//            this.pelinappulat.lisaaTorni(4);
+//            this.t4.setText(this.pelinappulat.getTorniArray()[4].toString());
+//            this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
+//        }
+//        
+//        else if (e.getSource() == this.t5) {
+//            this.pelinappulat.lisaaTorni(5);
+//            this.t5.setText(this.pelinappulat.getTorniArray()[5].toString());
+//            this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
+//        }
+//        
+//        else if (e.getSource() == this.t6) {
+//            this.pelinappulat.lisaaTorni(6);
+//            this.t6.setText(this.pelinappulat.getTorniArray()[6].toString());
+//            this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
+//        }
+//        
+//        else if (e.getSource() == this.t7) {
+//            this.pelinappulat.lisaaTorni(7);
+//            this.t7.setText(this.pelinappulat.getTorniArray()[7].toString());
+//            this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
+//        }
+//        
+//        else if (e.getSource() == this.t8) {
+//            this.pelinappulat.lisaaTorni(8);
+//            this.t8.setText(this.pelinappulat.getTorniArray()[8].toString());
+//            this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
+//        }
+//        
+//        else if (e.getSource() == this.t9) {
+//            this.pelinappulat.lisaaTorni(9);
+//            this.t9.setText(this.pelinappulat.getTorniArray()[9].toString());
+//            this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
+//        }
         
-        else if (e.getSource() == this.t1) {
-            this.pelinappulat.lisaaTorni(1);
-            this.t1.setText(this.pelinappulat.getTorniArray()[1].toString());
-            this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
-        }
-        
-        else if (e.getSource() == this.t2) {
-            this.pelinappulat.lisaaTorni(2);
-            this.t2.setText(this.pelinappulat.getTorniArray()[2].toString());
-            this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
-        }
-        
-        else if (e.getSource() == this.t3) {
-            this.pelinappulat.lisaaTorni(3);
-            this.t3.setText(this.pelinappulat.getTorniArray()[3].toString());
-            this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
-        }
-        
-        else if (e.getSource() == this.t4) {
-            this.pelinappulat.lisaaTorni(4);
-            this.t4.setText(this.pelinappulat.getTorniArray()[4].toString());
-            this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
-        }
-        
-        else if (e.getSource() == this.t5) {
-            this.pelinappulat.lisaaTorni(5);
-            this.t5.setText(this.pelinappulat.getTorniArray()[5].toString());
-            this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
-        }
-        
-        else if (e.getSource() == this.t6) {
-            this.pelinappulat.lisaaTorni(6);
-            this.t6.setText(this.pelinappulat.getTorniArray()[6].toString());
-            this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
-        }
-        
-        else if (e.getSource() == this.t7) {
-            this.pelinappulat.lisaaTorni(7);
-            this.t7.setText(this.pelinappulat.getTorniArray()[7].toString());
-            this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
-        }
-        
-        else if (e.getSource() == this.t8) {
-            this.pelinappulat.lisaaTorni(8);
-            this.t8.setText(this.pelinappulat.getTorniArray()[8].toString());
-            this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
-        }
-        
-        else if (e.getSource() == this.t9) {
-            this.pelinappulat.lisaaTorni(9);
-            this.t9.setText(this.pelinappulat.getTorniArray()[9].toString());
-            this.info.append("Torni lisatty, rahaa jaljella: "+this.pelinappulat.getRahaaJaljella());
-        }
-        
-        else if (e.getSource() == this.vuoro) {
+        if (e.getSource() == this.vuoro) {
             this.vuoro.setText("Seuraava vuoro ("+this.pelinappulat.getVuoro()+")");
-            
-            JLabel ruutu = new JLabel("U", SwingConstants.CENTER);
-            JLabel haavoitettu = new JLabel("u", SwingConstants.CENTER);
-            JLabel tapettu = new JLabel("X", SwingConstants.CENTER);
-            JLabel tyhjaruutu = new JLabel(" ", SwingConstants.CENTER);
-        
+
             this.pelinappulat.setVuoro(1);
-            int i = this.pelinappulat.getVuoro();
-        
-            this.ukot.remove(i - 1);
-            this.ukot.add(tyhjaruutu, i - 1);
-            this.ukot.remove(i);
+            this.ukot.removeAll();
             
-            if (this.pelinappulat.getUkkoArray()[i] != null) {
-                if (this.pelinappulat.getUkkoArray()[i].toString().equals("U")) {
-                    this.ukot.add(ruutu, i);
+            for (int j = 0; j < 10; j++) {
+                if (this.pelinappulat.getUkkoArray()[j] != null) {
+                    String merkki = this.pelinappulat.getUkkoArray()[j].toString();
+                    JLabel paikka = new JLabel(merkki, SwingConstants.CENTER);
+                    this.ukot.add(paikka);
                 }
-                else if (this.pelinappulat.getUkkoArray()[i].toString().equals("u")) {
-                    this.ukot.add(haavoitettu, i);
-                }
-                else if (this.pelinappulat.getUkkoArray()[i].toString().equals("X")) {
-                    this.ukot.add(tapettu, i);
-                    this.info.append("Ukko tuhottu");
-                    this.info.append("Voitit");
-                    this.vuoro.removeActionListener(this);
+                else {
+                    String merkki = " ";
+                    JLabel paikka = new JLabel(merkki, SwingConstants.CENTER);
+                    this.ukot.add(paikka);
                 }
             }
-            else if (this.pelinappulat.getUkkoArray()[i] == null) {
-                this.ukot.add(tapettu, i);
-                this.info.append("Ukko tuhottu");
-                this.info.append("\n\nVoitit");
-                this.vuoro.removeActionListener(this);
-                return;
-            }
             
+            this.ukot.validate();
+            
+            
+//            if (this.pelinappulat.getUkkoArray()[i] != null) {
+//                if (this.pelinappulat.getUkkoArray()[i].toString().equals("U")) {
+//                    this.ukot.add(ruutu, i);
+//                }
+//                else if (this.pelinappulat.getUkkoArray()[i].toString().equals("u")) {
+//                    this.ukot.add(haavoitettu, i);
+//                }
+//                else if (this.pelinappulat.getUkkoArray()[i].toString().equals("X")) {
+//                    this.ukot.add(tapettu, i);
+//                    this.info.append("Ukko tuhottu");
+//                    this.info.append("Voitit");
+//                    this.vuoro.removeActionListener(this);
+//                }
+//            }
+//            else if (this.pelinappulat.getUkkoArray()[i] == null) {
+//                this.ukot.add(tapettu, i);
+//                this.info.append("Ukko tuhottu");
+//                this.info.append("\n\nVoitit");
+//                this.vuoro.removeActionListener(this);
+//                return;
+//            }
+//            
             if (this.pelinappulat.getUkkoArray()[9] != null) {
                 this.info.append("Peli päättyi, hävisit!");
                 this.vuoro.removeActionListener(this);
@@ -180,35 +209,42 @@ public class Kuuntelija implements ActionListener{
         }
         
         else if (e.getSource() == this.nollaa) {
-            this.pelinappulat = new Pelinappulat();
-            this.t0.setText(""+0);
-            this.t1.setText(""+1);
-            this.t2.setText(""+2);
-            this.t3.setText(""+3);
-            this.t4.setText(""+4);
-            this.t5.setText(""+5);
-            this.t6.setText(""+6);
-            this.t7.setText(""+7);
-            this.t8.setText(""+8);
-            this.t9.setText(""+9);
             
-            this.vuoro.addActionListener(this);
-            this.vuoro.setText("Seuraava vuoro ("+this.pelinappulat.getVuoro()+")");
-            
-            for (int i = 0 ; i < 10 ; i++) {
-                this.ukot.remove(i);
-                if (i == 0) {
-                    this.ukot.add(new JLabel("U", SwingConstants.CENTER), i);
-                }
-                else if (i == 9) {
-                    this.ukot.add(new JLabel("KYLÄ", SwingConstants.CENTER), i);
-                }
-                else {
-                    this.ukot.add(new JLabel(" "), i);
-                }
+            if (this.pelinappulat.getVuoro() == 0) {
+                this.pelinappulat.lisaaUkko(0, 2);
+                this.nollaa.setText("Nollaa");
             }
+            else {
+                this.pelinappulat = new Pelinappulat();
+                this.t0.setText(""+0);
+                this.t1.setText(""+1);
+                this.t2.setText(""+2);
+                this.t3.setText(""+3);
+                this.t4.setText(""+4);
+                this.t5.setText(""+5);
+                this.t6.setText(""+6);
+                this.t7.setText(""+7);
+                this.t8.setText(""+8);
+                this.t9.setText(""+9);
             
-            this.info.append("Peli nollattu");
+                this.vuoro.addActionListener(this);
+                this.vuoro.setText("Seuraava vuoro ("+this.pelinappulat.getVuoro()+")");
+            
+                for (int i = 0 ; i < 10 ; i++) {
+                    this.ukot.remove(i);
+                    if (i == 0) {
+                        this.ukot.add(new JLabel("U", SwingConstants.CENTER), i);
+                    }
+                    else if (i == 9) {
+                        this.ukot.add(new JLabel("KYLÄ", SwingConstants.CENTER), i);
+                    }
+                    else {
+                        this.ukot.add(new JLabel(" "), i);
+                    }
+                }
+            
+                this.info.append("Peli nollattu");
+            }
         }
         
         if (this.pelinappulat.getRahaaJaljella() == 0) {

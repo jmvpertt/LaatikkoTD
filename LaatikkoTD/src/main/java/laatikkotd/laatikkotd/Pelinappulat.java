@@ -31,7 +31,7 @@ public class Pelinappulat {
         this.raha = 4;
         this.ukkojenmaara = 2;
         
-//        this.ukkoArray[0] = new Ukko(0, 2);
+        
     }
     
     /**

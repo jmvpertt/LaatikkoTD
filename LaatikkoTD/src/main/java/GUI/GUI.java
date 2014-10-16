@@ -107,7 +107,7 @@ public class GUI implements Runnable {
         Tornirivi.add(t9);
         
         JButton vuoronVaihto = new JButton("Seuraava vuoro");
-        JButton nollaa = new JButton("Nollaa");
+        JButton nollaa = new JButton("Aloita");
         JButton lopeta = new JButton("Lopeta");
         
         JPanel Valikko = new JPanel(new GridLayout(1,3));
@@ -117,7 +117,7 @@ public class GUI implements Runnable {
         
         JLabel Hautausmaa = new JLabel();
         
-        Kuuntelija k = new Kuuntelija(infoTeksti, Ukkopolku, t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, vuoronVaihto, nollaa, lopeta, ikkuna);
+        Kuuntelija k = new Kuuntelija(infoTeksti, Ukkopolku, Tornirivi, t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, vuoronVaihto, nollaa, lopeta, ikkuna);
         
         t0.addActionListener(k);
         t1.addActionListener(k);
@@ -132,7 +132,6 @@ public class GUI implements Runnable {
         
         vuoronVaihto.addActionListener(k);
         nollaa.addActionListener(k);
-//        lopeta.addActionListener(k);
         lopeta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ikkuna.dispose();
