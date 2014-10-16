@@ -58,53 +58,9 @@ public class GUI implements Runnable {
         JPanel infoTekstiPanel = new JPanel(new GridLayout(1,1));
         infoTekstiPanel.add(infoTeksti);
         
-        JLabel u0 = new JLabel("U", SwingConstants.CENTER);
-        JLabel u1 = new JLabel(" ");
-        JLabel u2 = new JLabel(" ");
-        JLabel u3 = new JLabel(" ");
-        JLabel u4 = new JLabel(" ");
-        JLabel u5 = new JLabel(" ");
-        JLabel u6 = new JLabel(" ");
-        JLabel u7 = new JLabel(" ");
-        JLabel u8 = new JLabel(" ");
-        JLabel u9 = new JLabel("KYLÄ", SwingConstants.CENTER);
+        JPanel Ukkopolku = luoUkkopolku();
         
-        JPanel Ukkopolku = new JPanel(new GridLayout(1,10));
-        
-        Ukkopolku.add(u0);
-        Ukkopolku.add(u1);
-        Ukkopolku.add(u2);
-        Ukkopolku.add(u3);
-        Ukkopolku.add(u4);
-        Ukkopolku.add(u5);
-        Ukkopolku.add(u6);
-        Ukkopolku.add(u7);
-        Ukkopolku.add(u8);
-        Ukkopolku.add(u9);
-        
-        JButton t0 = new JButton(""+0);
-        JButton t1 = new JButton(""+1);
-        JButton t2 = new JButton(""+2);
-        JButton t3 = new JButton(""+3);
-        JButton t4 = new JButton(""+4);
-        JButton t5 = new JButton(""+5);
-        JButton t6 = new JButton(""+6);
-        JButton t7 = new JButton(""+7);
-        JButton t8 = new JButton(""+8);
-        JButton t9 = new JButton(""+9);
-        
-        JPanel Tornirivi = new JPanel(new GridLayout(1, 10));
-        
-        Tornirivi.add(t0);
-        Tornirivi.add(t1);
-        Tornirivi.add(t2);
-        Tornirivi.add(t3);
-        Tornirivi.add(t4);
-        Tornirivi.add(t5);
-        Tornirivi.add(t6);
-        Tornirivi.add(t7);
-        Tornirivi.add(t8);
-        Tornirivi.add(t9);
+        JPanel Tornirivi = luoTornirivi();
         
         JButton vuoronVaihto = new JButton("Seuraava vuoro");
         JButton nollaa = new JButton("Aloita");
@@ -117,21 +73,8 @@ public class GUI implements Runnable {
         
         JLabel Hautausmaa = new JLabel();
         
-        Kuuntelija k = new Kuuntelija(infoTeksti, Ukkopolku, Tornirivi, t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, vuoronVaihto, nollaa, lopeta, ikkuna);
+        Kuuntelija k = new Kuuntelija(infoTeksti, Ukkopolku, Tornirivi , vuoronVaihto, nollaa, lopeta, ikkuna);
         
-        t0.addActionListener(k);
-        t1.addActionListener(k);
-        t2.addActionListener(k);
-        t3.addActionListener(k);
-        t4.addActionListener(k);
-        t5.addActionListener(k);
-        t6.addActionListener(k);
-        t7.addActionListener(k);
-        t8.addActionListener(k);
-        t9.addActionListener(k);
-        
-        vuoronVaihto.addActionListener(k);
-        nollaa.addActionListener(k);
         lopeta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ikkuna.dispose();
@@ -150,7 +93,7 @@ public class GUI implements Runnable {
         JPanel polku = new JPanel (new GridLayout(1,10));        
         for (int i = 0; i < 10 ; i++) {
             
-            JLabel ruutu = new JLabel(""+i, SwingConstants.CENTER);
+            JLabel ruutu = new JLabel(" ", SwingConstants.CENTER);
             polku.add(ruutu);
         }
         
