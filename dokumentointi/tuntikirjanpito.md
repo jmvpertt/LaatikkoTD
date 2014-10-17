@@ -30,3 +30,40 @@
 2014-09-25
   8+ tuntia
     Refaktorointia, luokka-kaavio, javadoc, pit, testejä
+    
+2014-10-1
+  2+ tuntia
+    Käyttöliittymän koodaus aloitettu
+    
+2014-10-2
+  5+ tuntia
+    Swingin koodaamiseen tutustumista
+    
+2014-10-7
+  4+ tuntia
+    Swing-koodaamista
+    
+2014-10-8
+  2+ tuntia
+    Swing-koodaamista
+    
+2014-10-9
+  4+ tuntia
+    Sovelluslogiikan uudelleenmiettimistä swingiin sopivaksi
+    
+2014-10-13
+  5+ tuntia
+    ActionListener-säätämistä
+    
+2014-10-14
+  10+ tuntia
+    Kuuntelijaluokan saaminen toimivaksi
+    
+2014-10-16
+  12+ tuntia
+    Kuuntelijaluokka refaktoroitu, pelinappulat luokalle siirretty kuuntelijaluokan ominaisuuksia, javadoc, luokkakaaviot
+    sekvenssikaaviot. Pientä refaktorointia kaikissa luokissa.
+
+2014-10-17
+  2+ tuntia
+    Hienosäätöä, jar-pakkaus.
