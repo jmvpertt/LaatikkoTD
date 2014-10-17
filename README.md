@@ -1,5 +1,3 @@
 LaatikkoTD
 ==========
 
-Tekstiä
-Lisää tekstiä
