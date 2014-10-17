@@ -63,3 +63,7 @@
   12+ tuntia
     Kuuntelijaluokka refaktoroitu, pelinappulat luokalle siirretty kuuntelijaluokan ominaisuuksia, javadoc, luokkakaaviot
     sekvenssikaaviot. Pientä refaktorointia kaikissa luokissa.
+
+2014-10-17
+  2+ tuntia
+    Hienosäätöä, jar-pakkaus.
