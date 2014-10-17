@@ -27,6 +27,15 @@ public class GUI implements Runnable {
 
     private JFrame ikkuna;
 
+    
+    /**
+     * Luokka, tai tarkemmin luoKompnentit -metodi, luo käyttöliittymän
+     * komponentit alussa ja kuuntelija-olion. Kuuntelija-olio
+     * hoitaa varsinaisen muokkaamisen. Vain lopeta-nappi on tämän metodin
+     * hallinnassa.
+     * 
+     */
+    
     @Override
     public void run() {
         ikkuna = new JFrame("LaatikkoTD");

@@ -30,6 +30,21 @@ public class Kuuntelija implements ActionListener{
     private JButton lopeta;
     private JFrame ikkuna;
     
+    /**
+     * Luokka hoitaa käyttöliittymän nappien toimisen ja tekstin ynnä muun
+     * päivittymisen. Luo Pelinappulat-olion ja käyttää sitä suurimpaan
+     * osaan toimintoja.
+     * 
+     * @param info tekstiruutu jossa kerrotaan pelin tapahtumista
+     * @param ukot JPanel jossa JLabelit ukon "polun" varrella
+     * @param tornit JPanel jossa tornien paikat JButtoneina
+     * @param vuoro JButton vuoronvaihtoon
+     * @param nollaa JButton aloittamiseen, nollaukseen
+     * @param lopeta JButton pelin lopettamiseen, GUI hallinnoi
+     * @param ikkuna pelin JFrame
+     * 
+     */
+    
     
     
     public Kuuntelija (JTextArea info, JPanel ukot, JPanel tornit, JButton vuoro, JButton nollaa, JButton lopeta, JFrame ikkuna) {
@@ -54,6 +69,11 @@ public class Kuuntelija implements ActionListener{
         nollaaNappi(e);
     }
     
+    /**
+     * Nollaa pelin luomalla uuden Pelinappulat-olion vanhan tilalle.
+     * 
+     * @param e napin painallus
+     */
     private void nollaaNappi(ActionEvent e) {
         if (e.getSource() == this.nollaa) {
             
@@ -73,6 +93,14 @@ public class Kuuntelija implements ActionListener{
         }
     }
     
+    
+    /**
+     * Nappia painamalla peli etenee vuoron. Kutsuu paivitaUkot-metodia
+     * Jos vuoron on 9 tai ukko pääsee viimeiseen ruutuun ilmoittaa pelin
+     * päättymisestä ja poistaa oman ActionListenerinsä.
+     * 
+     * @param e napin painallus
+     */
     private void vuoroNappi(ActionEvent e) {
         if (e.getSource() == this.vuoro) {
             this.pelinappulat.eteneVuoro();
@@ -104,6 +132,9 @@ public class Kuuntelija implements ActionListener{
         }
     }
     
+    /**
+     * Päivittää JButtonit poistamalla ne ja luomalla uudelleen.
+     */
     private void paivitaTornit() {
         this.tornit.removeAll();
             for (int j = 0; j < 10; j++) {
@@ -125,6 +156,9 @@ public class Kuuntelija implements ActionListener{
         this.tornit.validate();
     }
     
+    /**
+     * Päivittää JButtonit poistamalla ne ja luomalla uudelleen.
+     */
     private void paivitaUkot() {
         this.ukot.removeAll();
         for (int j = 0; j < 10; j++) {

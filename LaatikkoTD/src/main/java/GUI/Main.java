@@ -14,6 +14,11 @@ import laatikkotd.laatikkotd.Pelinappulat;
 
 public class Main {
 
+    /**
+     * Luokka luo GUI-luokan ja ajaa sen SwingUtilities.invokeLater metodilla
+     * 
+     * @param args ei käytetä
+     */
     public static void main(String[] args) {
         GUI gui = new GUI();
         SwingUtilities.invokeLater(gui);
