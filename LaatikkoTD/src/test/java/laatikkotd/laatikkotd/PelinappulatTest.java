@@ -46,6 +46,22 @@ public class PelinappulatTest {
     }
     
     @Test
+    public void kuolleidenMaara() {
+        assertEquals(0, pelinappulat.getKuolleet());
+        pelinappulat.lisaaHautausmaalle();
+        assertEquals(1, pelinappulat.getKuolleet());
+    }
+    
+    @Test
+    public void vuoronNollaus() {
+        pelinappulat.eteneVuoro();
+        pelinappulat.eteneVuoro();
+        pelinappulat.eteneVuoro();
+        pelinappulat.eteneVuoro();
+        pelinappulat.nollaaVuoro();
+        assertEquals(0, pelinappulat.getVuoro());
+    }
+    @Test
     public void torninLisaysKunRahatLoppu() {
         pelinappulat.setRaha(0);
         pelinappulat.lisaaTorni(1);
@@ -91,6 +107,25 @@ public class PelinappulatTest {
         assertEquals(1, pelinappulat.getKuolleet());
         assertEquals("[null, null, null, null, null, null, null, null, null, null]", Arrays.toString(this.pelinappulat.getUkkoArray()));
         assertEquals("[null, null, T, null, null, null, null, null, null, null]", Arrays.toString(this.pelinappulat.getTorniArray()));
+    }
+    
+    @Test
+    public void apuTekstitoimii() {
+        assertEquals("Tervetuloa!\nKun olet valmis, paina Aloita-nappia", pelinappulat.getApuTeksti(0));
+        assertEquals("Vuoro: "+1+
+                            "\nRahaa: "+4+
+                            "\nKuolleita: "+0+
+                            "\n\n", pelinappulat.getApuTeksti(1));
+        assertEquals("Peli päättyi, hävisit!", pelinappulat.getApuTeksti(2));
+        assertEquals("Voitit!", pelinappulat.getApuTeksti(3));
+        assertEquals("", pelinappulat.getApuTeksti(9999));
+    }
+    
+    @Test
+    public void vuoronEteneminen() {
+        assertEquals(0, pelinappulat.getVuoro());
+        pelinappulat.eteneVuoro();
+        assertEquals(1, pelinappulat.getVuoro());
     }
     
 }
