@@ -167,15 +167,15 @@ public class Pelinappulat {
             if (this.ukkoArray[j] != null && this.torniArray[j] != null) {
                 int hp = this.ukkoArray[j].getHp();
                 int voima = this.torniArray[j].getVoima();
-                if (hp - voima > 1) {
+                if (hp - voima > 2) {
                     this.getUkkoArray()[j] = new Ukko(j, hp);
                     this.getUkkoArray()[j].setMerkki("u");
                 }
-                else if (hp - voima == 1) {
+                else if (hp - voima == 2) {
                     this.getUkkoArray()[j] = new Ukko(j, 1);
                     this.getUkkoArray()[j].setMerkki("X");
                 }
-                else if (hp - voima <= 0) {
+                else if (hp - voima <= 1) {
                     tapaUkko(j);
                 }
             }
@@ -205,11 +205,11 @@ public class Pelinappulat {
             return this.aputeksti;
         }
         else if (vaihe == 1) {
-            this.aputeksti = "Vuoro: "+this.getVuoro()+
+            this.aputeksti = "Vuoro: "+(this.getVuoro() + 1)+
                             "\nRahaa: "+this.getRahaaJaljella()+
                             "\nKuolleita: "+this.getKuolleet()+
-                            "\n"+Arrays.toString(getTorniArray())+
-                            "\n"+Arrays.toString(getUkkoArray())+
+//                            "\n"+Arrays.toString(getTorniArray())+
+//                            "\n"+Arrays.toString(getUkkoArray())+
                             "\n\n";
             return this.aputeksti;
         }

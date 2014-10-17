@@ -7,7 +7,6 @@ package GUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -50,9 +49,31 @@ public class Kuuntelija implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        
         torniNappi(e);
-        
+        vuoroNappi(e);
+        nollaaNappi(e);
+    }
+    
+    private void nollaaNappi(ActionEvent e) {
+        if (e.getSource() == this.nollaa) {
+            
+            this.pelinappulat = new Pelinappulat();
+            this.pelinappulat.lisaaUkko(0, 2);
+            
+            
+            this.info.setText(this.pelinappulat.getApuTeksti(0));
+            paivitaUkot();
+            paivitaTornit();
+            
+            this.pelinappulat.nollaaVuoro();
+            this.vuoro.removeActionListener(this);
+            this.vuoro.addActionListener(this);
+            
+            this.nollaa.setText("Aloita/Nollaa");
+        }
+    }
+    
+    private void vuoroNappi(ActionEvent e) {
         if (e.getSource() == this.vuoro) {
             this.pelinappulat.eteneVuoro();
             paivitaUkot();
@@ -71,21 +92,6 @@ public class Kuuntelija implements ActionListener{
             
             this.info.setText(this.pelinappulat.getApuTeksti(1)+"Vuoro vaihtui.");
         }
-        
-        else if (e.getSource() == this.nollaa) {
-            
-            this.pelinappulat = new Pelinappulat();
-            this.pelinappulat.lisaaUkko(0, 2);
-            this.ukot.add(new JLabel("U", SwingConstants.CENTER), 0);
-            
-            this.info.setText(this.pelinappulat.getApuTeksti(0));
-            paivitaUkot();
-            paivitaTornit();
-            
-            this.nollaa.setText("Aloita/Nollaa");
-            
-        }
-        
     }
     
     private void torniNappi(ActionEvent e) {
